@@ -14,7 +14,7 @@ export default function Index() {
       />
       <SafeAreaView className=" h-full">
         <ScrollView>
-          <View className="px-10 w-full justify-around items-center min-h-[85vh] ">
+          <View className="w-full justify-around items-center px-8 min-h-[85vh]">
             <Image
               source={images.logo}
               className="w-[200px] h-[100px]"
