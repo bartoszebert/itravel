@@ -73,9 +73,10 @@ const SignIn = () => {
                   </Link>
                 </View>
                 <CustomButton
-                  title="Get Started"
+                  title="App"
                   handlePress={() => router.push("/home")}
-                  containerStyles="mt-8"
+                  containerStyles="mt-8 bg-secondary"
+                  textStyles="text-white"
                 />
               </View>
             </View>
