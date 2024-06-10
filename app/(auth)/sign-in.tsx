@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "@/components/ui/FormField";
 import CustomButton from "@/components/ui/CustomButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { images } from "@/constants";
 
 interface ISignInData {
@@ -72,6 +72,11 @@ const SignIn = () => {
                     Sign Up
                   </Link>
                 </View>
+                <CustomButton
+                  title="Get Started"
+                  handlePress={() => router.push("/home")}
+                  containerStyles="mt-8"
+                />
               </View>
             </View>
           </ScrollView>
