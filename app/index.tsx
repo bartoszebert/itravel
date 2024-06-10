@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ScrollView, Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
+import { router } from "expo-router";
 
 export default function Index() {
   return (
@@ -34,7 +35,7 @@ export default function Index() {
               </Text>
               <CustomButton
                 title="Get Started"
-                handlePress={() => {}}
+                handlePress={() => router.push("/sign-in")}
                 containerStyles="mt-8"
               />
             </View>
