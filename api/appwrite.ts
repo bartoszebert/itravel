@@ -1,3 +1,4 @@
+import { IUser } from "@/interfaces/IUser";
 import {
   Account,
   Avatars,
@@ -77,13 +78,13 @@ export const signIn = async (email: string, password: string) => {
   }
 };
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = async (): Promise<IUser | null> => {
   try {
     const currentAccount = await account.get();
 
     if (!currentAccount) throw new Error();
 
-    const currentUser = await databases.listDocuments(
+    const currentUser = await databases.listDocuments<IUser>(
       databaseId,
       userCollectionId,
       [Query.equal("accountId", currentAccount.$id)]
