@@ -3,9 +3,14 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ScrollView, Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function Index() {
+  const { isLoading, isLogged } = useGlobalContext();
+
+  if (!isLoading && isLogged) return <Redirect href="/home" />;
+  
   return (
     <View className="bg-secondary">
       <LinearGradient

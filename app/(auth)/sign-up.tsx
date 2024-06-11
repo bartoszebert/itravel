@@ -1,18 +1,54 @@
-import { View, Text, ScrollView, Image, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  ImageBackground,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "@/components/ui/FormField";
 import CustomButton from "@/components/ui/CustomButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { images } from "@/constants";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { createUser } from "@/api/appwrite";
 
-interface ISignInData {
+interface ISignUpData {
+  username: string;
   email: string;
   password: string;
 }
 
 const SignIn = () => {
-  const [form, setForm] = useState<ISignInData>({ email: "", password: "" });
+  const [form, setForm] = useState<ISignUpData>({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { setUser, setIsLogged } = useGlobalContext();
+
+  const submit = async () => {
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert("Error", "Please fill in all fields");
+    }
+
+    setIsSubmitting(true);
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      setUser(result);
+      setIsLogged(true);
+
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", "Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <View className="bg-primary">
@@ -38,6 +74,15 @@ const SignIn = () => {
                   Sign up:
                 </Text>
                 <FormField
+                  title="Username"
+                  placeholder="Username"
+                  value={form.username}
+                  handleChangeText={(e: string) =>
+                    setForm({ ...form, username: e })
+                  }
+                  otherStyles="mt-7"
+                />
+                <FormField
                   title="Email"
                   value={form.email}
                   handleChangeText={(e: string) =>
@@ -58,8 +103,10 @@ const SignIn = () => {
                 />
                 <CustomButton
                   title="Sign up"
-                  handlePress={() => console.log(form)}
-                  containerStyles="mt-5"
+                  handlePress={submit}
+                  containerStyles="mt-5 bg-secondary"
+                  textStyles="text-white"
+                  isLoading={isSubmitting}
                 />
                 <View className="justify-center pt-5 flex-row gap-2">
                   <Text className="text-sm text-gray-100 font-pregular">

@@ -1,10 +1,19 @@
-import { View, Text, ScrollView, Image, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  ImageBackground,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "@/components/ui/FormField";
 import CustomButton from "@/components/ui/CustomButton";
 import { Link, router } from "expo-router";
 import { images } from "@/constants";
+import { getCurrentUser, signIn } from "@/api/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 interface ISignInData {
   email: string;
@@ -13,6 +22,27 @@ interface ISignInData {
 
 const SignIn = () => {
   const [form, setForm] = useState<ISignInData>({ email: "", password: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { setUser, setIsLogged } = useGlobalContext();
+
+  const submit = async () => {
+    if (!form.email || !form.password)
+      Alert.alert("Error", "Please fill in all fields");
+    setIsSubmitting(true);
+
+    try {
+      await signIn(form.email, form.password);
+      const result = await getCurrentUser();
+      setUser(result);
+      setIsLogged(true);
+
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", "Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <View className="bg-primary">
@@ -58,8 +88,10 @@ const SignIn = () => {
                 />
                 <CustomButton
                   title="Log in"
-                  handlePress={() => console.log(form)}
-                  containerStyles="mt-5"
+                  handlePress={submit}
+                  containerStyles="mt-5 bg-secondary"
+                  textStyles="text-white"
+                  isLoading={isSubmitting}
                 />
                 <View className="justify-center pt-5 flex-row gap-2">
                   <Text className="text-sm text-gray-100 font-pregular">
@@ -72,12 +104,6 @@ const SignIn = () => {
                     Sign Up
                   </Link>
                 </View>
-                <CustomButton
-                  title="App"
-                  handlePress={() => router.push("/home")}
-                  containerStyles="mt-8 bg-secondary"
-                  textStyles="text-white"
-                />
               </View>
             </View>
           </ScrollView>
