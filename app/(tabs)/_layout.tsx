@@ -12,10 +12,7 @@ const TabIcon = ({ icon, color, name, focused }: any) => {
         tintColor={color}
         className="w-6 h-6"
       />
-      <Text
-        className={"text-xs font-pregular"}
-        style={{ color: color }}
-      >
+      <Text className={"text-xs font-pregular"} style={{ color: color }}>
         {name}
       </Text>
     </View>
@@ -111,6 +108,13 @@ const TabsLayout = () => {
               focused={focused}
             />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="(manage)/editProfile"
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
         }}
       />
     </Tabs>

@@ -37,7 +37,6 @@ const GlobalProvider = ({ children }: Props) => {
         const res = await getCurrentUser();
         if (res) {
           setIsLogged(true);
-          console.log(res);
           setUser(res);
         } else {
           setIsLogged(false);
