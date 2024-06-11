@@ -9,23 +9,27 @@ interface Props {
   handleChangeText: (text: string) => void;
   otherStyles?: any;
   keyboardType?: any;
-  disabled?: boolean;
 }
 
-const FormField = ({
+const AuthFormField = ({
   title,
   value,
   placeholder,
   handleChangeText,
   otherStyles,
   keyboardType,
-  disabled
+  ...props
 }: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <View className={`${otherStyles}`}>
       <View className="border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row">
+        <Image
+          source={title === "Password" ? icons.password : icons.profile}
+          className="w-4 h-4 mr-3"
+          resizeMode="contain"
+        />
         <TextInput
           className="flex-1 text-primary font-pregular text-base"
           placeholder={placeholder}
@@ -34,7 +38,6 @@ const FormField = ({
           value={value}
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
-          editable={!disabled}
         />
         {title === "Password" && value && (
           <TouchableOpacity
@@ -53,4 +56,4 @@ const FormField = ({
   );
 };
 
-export default FormField;
+export default AuthFormField;

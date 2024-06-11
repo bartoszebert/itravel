@@ -37,7 +37,7 @@ export const createUser = async (
   email: string,
   password: string,
   username: string
-) => {
+): Promise<IUser | null> => {
   try {
     const newAccount = await account.create(
       ID.unique(),
@@ -49,7 +49,7 @@ export const createUser = async (
     if (!newAccount) throw new Error("Failed to create user");
 
     const avatarUrl = avatars.getInitials(username);
-    const newUser = await databases.createDocument(
+    const newUser = await databases.createDocument<IUser>(
       databaseId,
       userCollectionId,
       ID.unique(),

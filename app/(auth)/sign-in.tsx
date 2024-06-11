@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import FormField from "@/components/ui/FormField";
+import AuthFormField from "@/components/ui/AuthFormField";
 import CustomButton from "@/components/ui/CustomButton";
 import { Link, router } from "expo-router";
 import { images } from "@/constants";
@@ -73,7 +73,7 @@ const SignIn = () => {
                 <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
                   Log in:
                 </Text>
-                <FormField
+                <AuthFormField
                   title="Email"
                   placeholder="Email"
                   value={form.email}
@@ -83,7 +83,7 @@ const SignIn = () => {
                   otherStyles="mt-3"
                   keyboardType="email-address"
                 />
-                <FormField
+                <AuthFormField
                   title="Password"
                   placeholder="Password"
                   value={form.password}
