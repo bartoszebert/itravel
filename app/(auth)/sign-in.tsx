@@ -5,6 +5,8 @@ import {
   Image,
   ImageBackground,
   Alert,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -57,13 +59,17 @@ const SignIn = () => {
                   className="w-[200px] h-[100px]"
                   resizeMode="contain"
                 />
+              </View>
+              <View className="w-full items-center">
                 <Image
                   source={images.travel}
-                  className="w-[100px] h-[100px] mt-10"
+                  className="w-[100px] h-[100px]"
                   resizeMode="contain"
                 />
               </View>
-              <View>
+              <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+              >
                 <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
                   Log in:
                 </Text>
@@ -104,7 +110,7 @@ const SignIn = () => {
                     Sign Up
                   </Link>
                 </View>
-              </View>
+              </KeyboardAvoidingView>
             </View>
           </ScrollView>
         </SafeAreaView>

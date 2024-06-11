@@ -8,12 +8,12 @@ import {
 } from "react-native-appwrite";
 
 export const config = {
-  endpoint: String(process.env.REACT_APP_APPWRITE_ENDPOINT),
-  platform: String(process.env.REACT_APP_APPWRITE_PLATFORM),
-  projectId: String(process.env.REACT_APP_APPWRITE_PROJECT_ID),
-  databaseId: String(process.env.REACT_APP_APPWRITE_DATABASE_ID),
-  userCollectionId: String(process.env.REACT_APP_APPWRITE_USER_COLLECTION_ID),
-  storageId: String(process.env.REACT_APP_APPWRITE_STORAGE_ID),
+  endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+  platform: process.env.EXPO_PUBLIC_APPWRITE_PLATFORM,
+  projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
+  databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
+  userCollectionId: process.env.EXPO_PUBLIC_APPWRITE_USER_COLLECTION_ID,
+  storageId: process.env.EXPO_PUBLIC_APPWRITE_STORAGE_ID,
 };
 
 const {
@@ -27,6 +27,7 @@ const {
 
 const client = new Client();
 client.setEndpoint(endpoint).setProject(projectId).setPlatform(platform);
+console.log(String(process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT));
 
 const account = new Account(client);
 const avatars = new Avatars(client);
