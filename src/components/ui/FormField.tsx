@@ -1,4 +1,4 @@
-import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Image, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { icons } from "@/constants";
 
@@ -9,27 +9,23 @@ interface Props {
   handleChangeText: (text: string) => void;
   otherStyles?: any;
   keyboardType?: any;
+  disabled?: boolean;
 }
 
-const AuthFormField = ({
+const FormField = ({
   title,
   value,
   placeholder,
   handleChangeText,
   otherStyles,
   keyboardType,
-  ...props
+  disabled
 }: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <View className={`${otherStyles}`}>
       <View className="border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row">
-        <Image
-          source={title === "Password" ? icons.password : icons.profile}
-          className="w-4 h-4 mr-3"
-          resizeMode="contain"
-        />
         <TextInput
           className="flex-1 text-primary font-pregular text-base"
           placeholder={placeholder}
@@ -38,6 +34,7 @@ const AuthFormField = ({
           value={value}
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
+          editable={!disabled}
         />
         {title === "Password" && value && (
           <TouchableOpacity
@@ -56,4 +53,4 @@ const AuthFormField = ({
   );
 };
 
-export default AuthFormField;
+export default FormField;
