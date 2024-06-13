@@ -3,7 +3,7 @@ import { Image, Text, View } from "react-native";
 
 interface ITravelListItem {
   item: {
-    id: string;
+    travelId: string;
     name: string;
     startDate: string;
     endDate: string;
@@ -16,10 +16,10 @@ interface ITravelListItem {
 }
 
 const TravelListItem = ({ item }: ITravelListItem) => {
-  const { id, name, photo, startDate, endDate } = item;
+  const { travelId, name, photo, startDate, endDate } = item;
 
   return (
-    <View key={id} className="bg-primary mt-5">
+    <View key={travelId} className="bg-primary mt-5">
       <Image
         source={{ uri: photo }}
         className="w-full h-[120px] rounded-lg mb-3"
