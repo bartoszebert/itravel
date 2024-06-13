@@ -1,17 +1,8 @@
+import Travels from "@/components/screen/itravel/Travels";
 import React from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
-const Travels = () => {
-  return (
-    <SafeAreaView className="bg-primary h-full">
-      <View className="pt-20">
-        <Text className="text-2xl font-pbold text-white text-center">
-          Travels
-        </Text>
-      </View>
-    </SafeAreaView>
-  );
+const TravelsPage = () => {
+  return <Travels />;
 };
 
-export default Travels;
+export default TravelsPage;
