@@ -21,11 +21,13 @@ const SignInForm = () => {
   const submit = async () => {
     if (!form.email || !form.password)
       Alert.alert("Error", "Please fill in all fields");
+
     setIsSubmitting(true);
 
     try {
       await signIn(form.email, form.password);
       const result = await getCurrentUser();
+
       setUser(result);
       setIsLogged(true);
 

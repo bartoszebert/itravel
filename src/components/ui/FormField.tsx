@@ -1,6 +1,6 @@
-import { View, Image, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
 import { icons } from "@/constants";
+import React, { useState } from "react";
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 
 interface Props {
   title: string;
@@ -19,13 +19,17 @@ const FormField = ({
   handleChangeText,
   otherStyles,
   keyboardType,
-  disabled
+  disabled,
 }: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <View className={`${otherStyles}`}>
-      <View className="border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row">
+      <View
+        className={`border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row ${
+          disabled ? "opacity-30" : ""
+        }`}
+      >
         <TextInput
           className="flex-1 text-primary font-pregular text-base"
           placeholder={placeholder}

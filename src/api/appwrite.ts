@@ -69,11 +69,42 @@ export const createUser = async (
   }
 };
 
+interface IUpdateUserProps {
+  id: string;
+  email: string;
+  username: string;
+  firstname: string;
+  lastname: string;
+}
+
+export const updateUser = async ({
+  id,
+  firstname,
+  lastname,
+}: IUpdateUserProps): Promise<IUser | null> => {
+  try {
+    const updatedUser = await databases.updateDocument<IUser>(
+      databaseId,
+      userCollectionId,
+      id,
+      {
+        firstname,
+        lastname,
+      }
+    );
+
+    return updatedUser;
+  } catch (error) {
+    throw new Error("error");
+  }
+};
+
 export const signIn = async (email: string, password: string) => {
   try {
     const session = await account.createEmailPasswordSession(email, password);
     return session;
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to sign in");
   }
 };

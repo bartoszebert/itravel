@@ -1,23 +1,35 @@
-import { IUser } from "@/interfaces/IUser";
+import { updateUser } from "@/api/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 import { IUserForm } from "@/interfaces/IUserForm";
 import { editProfileFormFields } from "@/utils/editProfileFormFields";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { Image, View } from "react-native";
+import { Alert, Image, View } from "react-native";
 import CustomButton from "../ui/CustomButton";
 import FormField from "../ui/FormField";
 
-interface IProps {
-  user: IUser | null;
-}
+const EditProfileForm = () => {
+  const { user, setUser } = useGlobalContext();
 
-const EditProfileForm = ({ user }: IProps) => {
   const [form, setForm] = useState<IUserForm>({
     username: user?.username || "",
     firstname: user?.firstname || "",
     lastname: user?.lastname || "",
     email: user?.email || "",
   });
+
+  const submit = async () => {
+    if (!user?.$id) return;
+
+    const data = { id: user.$id, ...form };
+    const newUserData = await updateUser(data);
+    if (!newUserData) {
+      Alert.alert("Error", "Something went wrong.");
+    } else {
+      setUser(newUserData);
+      router.push("/profile");
+    }
+  };
 
   if (!user) return null;
 
@@ -45,7 +57,7 @@ const EditProfileForm = ({ user }: IProps) => {
 
       <CustomButton
         title="Update"
-        handlePress={() => console.log(form)}
+        handlePress={submit}
         containerStyles="mt-5 w-full bg-secondary"
         textStyles="text-white"
       />
