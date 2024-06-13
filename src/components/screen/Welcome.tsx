@@ -1,16 +1,16 @@
 import CustomButton from "@/components/ui/CustomButton";
-import { LinearGradient } from "expo-linear-gradient";
-import { ScrollView, Text, View, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
-import { Redirect, router } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
+import { LinearGradient } from "expo-linear-gradient";
+import { Redirect, router } from "expo-router";
+import { Image, ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const { isLoading, isLogged } = useGlobalContext();
 
   if (!isLoading && isLogged) return <Redirect href="/home" />;
-  
+
   return (
     <View className="bg-secondary">
       <LinearGradient

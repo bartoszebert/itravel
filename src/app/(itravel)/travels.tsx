@@ -1,17 +1,17 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Discover = () => {
+const Travels = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <View className="pt-20">
         <Text className="text-2xl font-pbold text-white text-center">
-          Discover
+          Travels
         </Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Discover;
+export default Travels;

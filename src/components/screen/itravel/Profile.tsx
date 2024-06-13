@@ -1,11 +1,11 @@
-import { View, Text, ScrollView } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useGlobalContext } from "@/context/GlobalProvider";
 import { signOut } from "@/api/appwrite";
-import { router } from "expo-router";
 import CustomButton from "@/components/ui/CustomButton";
-import UserDetails from "@/components/feature/UserDetails";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { router } from "expo-router";
+import React from "react";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import UserDetails from "../../feature/UserDetails";
 
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();

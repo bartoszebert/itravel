@@ -1,11 +1,11 @@
-import { View, Text, Image } from "react-native";
-import React, { useState } from "react";
 import { IUser } from "@/interfaces/IUser";
-import FormField from "../ui/FormField";
 import { IUserForm } from "@/interfaces/IUserForm";
 import { editProfileFormFields } from "@/utils/editProfileFormFields";
-import CustomButton from "../ui/CustomButton";
 import { router } from "expo-router";
+import React, { useState } from "react";
+import { Image, View } from "react-native";
+import CustomButton from "../ui/CustomButton";
+import FormField from "../ui/FormField";
 
 interface IProps {
   user: IUser | null;

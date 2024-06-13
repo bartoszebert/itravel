@@ -1,6 +1,6 @@
-import { View, Text, Image } from "react-native";
-import React from "react";
 import { IUser } from "@/interfaces/IUser";
+import React from "react";
+import { Image, Text, View } from "react-native";
 
 interface IProps {
   user: IUser | null;
@@ -20,10 +20,11 @@ const UserDetails = ({ user }: IProps) => {
         Username: <Text className="font-psemibold">{user.username}</Text>
       </Text>
       <Text className="text-white mt-2">
-        Firstname: <Text className="font-psemibold">{user.firstname || '-'}</Text>
+        Firstname:{" "}
+        <Text className="font-psemibold">{user.firstname || "-"}</Text>
       </Text>
       <Text className="text-white mt-2">
-        Lastname: <Text className="font-psemibold">{user.lastname || '-'}</Text>
+        Lastname: <Text className="font-psemibold">{user.lastname || "-"}</Text>
       </Text>
       <Text className="text-white mt-2">
         Email: <Text className="font-psemibold">{user.email}</Text>

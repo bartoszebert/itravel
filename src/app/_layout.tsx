@@ -1,8 +1,8 @@
-import "react-native-url-polyfill/auto";
-import { SplashScreen, Stack } from "expo-router";
-import { useFonts } from "expo-font";
-import { useEffect } from "react";
 import GlobalProvider from "@/context/GlobalProvider";
+import { useFonts } from "expo-font";
+import { SplashScreen, Stack } from "expo-router";
+import { useEffect } from "react";
+import "react-native-url-polyfill/auto";
 
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
@@ -29,7 +29,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(itravel)" options={{ headerShown: false }} />
       </Stack>
     </GlobalProvider>
   );
