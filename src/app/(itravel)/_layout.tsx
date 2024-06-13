@@ -112,10 +112,11 @@ const TabsLayout = () => {
       />
       <Tabs.Screen
         name="(manage)/editProfile"
-        options={{
-          headerShown: false,
-          tabBarButton: () => null,
-        }}
+        options={{ headerShown: false, href: null }}
+      />
+      <Tabs.Screen
+        name="(manage)/addTravel"
+        options={{ headerShown: false, href: null }}
       />
     </Tabs>
   );
