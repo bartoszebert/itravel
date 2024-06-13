@@ -1,4 +1,4 @@
-import useSignOut from "@/api/useSignOut";
+import useSignOut from "@/api/auth/useSignOut";
 import CustomButton from "@/components/ui/CustomButton";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { router } from "expo-router";

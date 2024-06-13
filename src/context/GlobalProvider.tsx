@@ -1,4 +1,4 @@
-import useGetCurrentUser from "@/api/useGetCurrentUser";
+import useGetCurrentUser from "@/api/auth/useGetCurrentUser";
 import { IGlobalState } from "@/interfaces/IGlobalInterface";
 import { IUser } from "@/interfaces/IUser";
 import {

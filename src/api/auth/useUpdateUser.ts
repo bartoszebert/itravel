@@ -1,6 +1,6 @@
 import { IUser } from "@/interfaces/IUser";
-import useAppwrite from "./useAppwrite";
-import { appwriteConfig } from "./utils/appwriteConfig";
+import useAppwrite from "../useAppwrite";
+import { appwriteConfig } from "../utils/appwriteConfig";
 
 interface IUpdateUserProps {
   id: string;

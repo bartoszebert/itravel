@@ -1,4 +1,4 @@
-import useAppwrite from "./useAppwrite";
+import useAppwrite from "../useAppwrite";
 
 const useSignOut = async () => {
   const { account } = useAppwrite();

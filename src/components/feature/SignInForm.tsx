@@ -1,5 +1,5 @@
-import useGetCurrentUser from "@/api/useGetCurrentUser";
-import useSignIn from "@/api/useSignIn";
+import useGetCurrentUser from "@/api/auth/useGetCurrentUser";
+import useSignIn from "@/api/auth/useSignIn";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignInData } from "@/interfaces/ISignInData";
 import { Link, router } from "expo-router";

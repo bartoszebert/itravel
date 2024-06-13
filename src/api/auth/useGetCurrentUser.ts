@@ -1,7 +1,7 @@
 import { IUser } from "@/interfaces/IUser";
 import { Query } from "react-native-appwrite";
-import useAppwrite from "./useAppwrite";
-import { appwriteConfig } from "./utils/appwriteConfig";
+import useAppwrite from "../useAppwrite";
+import { appwriteConfig } from "../utils/appwriteConfig";
 
 const useGetCurrentUser = async (): Promise<IUser | null> => {
   const { account, databases } = useAppwrite();

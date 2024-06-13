@@ -1,4 +1,4 @@
-import useCreateUser from "@/api/useCreateUser";
+import useCreateUser from "@/api/auth/useCreateUser";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignUpData } from "@/interfaces/ISignUpData";
 import { Link, router } from "expo-router";

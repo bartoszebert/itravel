@@ -1,8 +1,8 @@
 import { IUser } from "@/interfaces/IUser";
 import { ID } from "react-native-appwrite";
-import useAppwrite from "./useAppwrite";
+import useAppwrite from "../useAppwrite";
+import { appwriteConfig } from "../utils/appwriteConfig";
 import signIn from "./useSignIn";
-import { appwriteConfig } from "./utils/appwriteConfig";
 
 const useCreateUser = async (
   email: string,

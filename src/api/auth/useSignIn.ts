@@ -1,4 +1,4 @@
-import useAppwrite from "./useAppwrite";
+import useAppwrite from "../useAppwrite";
 
 const useSignIn = async (email: string, password: string) => {
   const { account } = useAppwrite();
