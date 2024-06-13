@@ -1,4 +1,4 @@
-import { updateUser } from "@/api/appwrite";
+import useUpdateUser from "@/api/useUpdateUser";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { IUserForm } from "@/interfaces/IUserForm";
 import { editProfileFormFields } from "@/utils/editProfileFormFields";
@@ -22,7 +22,7 @@ const EditProfileForm = () => {
     if (!user?.$id) return;
 
     const data = { id: user.$id, ...form };
-    const newUserData = await updateUser(data);
+    const newUserData = await useUpdateUser(data);
     if (!newUserData) {
       Alert.alert("Error", "Something went wrong.");
     } else {

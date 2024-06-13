@@ -1,12 +1,12 @@
-import { getCurrentUser } from "@/api/appwrite";
+import useGetCurrentUser from "@/api/useGetCurrentUser";
 import { IGlobalState } from "@/interfaces/IGlobalInterface";
 import { IUser } from "@/interfaces/IUser";
 import {
+  ReactNode,
   createContext,
   useContext,
-  useState,
   useEffect,
-  ReactNode,
+  useState,
 } from "react";
 
 const defaultGlobalState: IGlobalState = {
@@ -34,7 +34,7 @@ const GlobalProvider = ({ children }: Props) => {
     const updateUserStatus = async () => {
       setIsLoading(true);
       try {
-        const res = await getCurrentUser();
+        const res = await useGetCurrentUser();
         if (res) {
           setIsLogged(true);
           setUser(res);

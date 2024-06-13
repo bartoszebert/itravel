@@ -1,4 +1,5 @@
-import { getCurrentUser, signIn } from "@/api/appwrite";
+import useGetCurrentUser from "@/api/useGetCurrentUser";
+import useSignIn from "@/api/useSignIn";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignInData } from "@/interfaces/ISignInData";
 import { Link, router } from "expo-router";
@@ -25,8 +26,8 @@ const SignInForm = () => {
     setIsSubmitting(true);
 
     try {
-      await signIn(form.email, form.password);
-      const result = await getCurrentUser();
+      await useSignIn(form.email, form.password);
+      const result = await useGetCurrentUser();
 
       setUser(result);
       setIsLogged(true);
