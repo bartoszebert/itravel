@@ -1,12 +1,26 @@
+import useGetTravelList from "@/api/travelList/useGetTravelList";
 import CustomButton from "@/components/ui/CustomButton";
 import { useTravelContext } from "@/context/TravelProvider";
 import { router } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, View } from "react-native";
 import TripListItem from "./TripListItem";
 
 const TripList = () => {
-  const { travelList } = useTravelContext();
+  const { travelList, setTravelList } = useTravelContext();
+
+  const refetchTravels = async () => {
+    try {
+      const res = await useGetTravelList();
+      setTravelList(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    refetchTravels();
+  }, []);
 
   return (
     <View>
@@ -18,7 +32,7 @@ const TripList = () => {
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View className="h-3" />}
         refreshing={false}
-        onRefresh={() => {}}
+        onRefresh={refetchTravels}
         className="mt-5 min-h-[60vh]"
       />
       <CustomButton

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_KEY = String(process.env.EXPO_PUBLIC_GEOAPIFY_API_KEY);
+const API_KEY = "6085d9196a8c4c18a3e0e5ede7818633";
 
 const useGetLocations = (search: string) => {
   const [data, setData] = useState<any[]>([]);

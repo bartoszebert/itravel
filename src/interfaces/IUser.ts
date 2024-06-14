@@ -10,4 +10,5 @@ export interface IUser {
   firstname: string;
   lastname: string;
   avatar: string;
+  accountId: string;
 }

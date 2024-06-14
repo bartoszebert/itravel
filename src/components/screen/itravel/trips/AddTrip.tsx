@@ -1,8 +1,11 @@
+import useAddTravel from "@/api/travelList/useAddTravel";
 import useGetLocations from "@/api/useGetLocations";
 import usePexels from "@/api/usePexels";
 import CustomButton from "@/components/ui/CustomButton";
 import FormField from "@/components/ui/FormField";
+import { useGlobalContext } from "@/context/GlobalProvider";
 import useDebounce from "@/hooks/useDebounce";
+import DatePicker from "@react-native-community/datetimepicker";
 import { router } from "expo-router";
 import { PhotosWithTotalResults } from "pexels";
 import React, { useEffect, useState } from "react";
@@ -19,14 +22,16 @@ import {
 } from "react-native";
 
 const AddTrip = () => {
+  const { user } = useGlobalContext();
+
   const [destination, setDestination] = useState<string>("");
   const [locations, setLocations] = useState<any[]>([]);
   const [form, setForm] = useState({
     destination: "",
     name: "",
     photo: "",
-    startDate: "",
-    endDate: "",
+    startDate: new Date(),
+    endDate: new Date(),
   });
 
   const debouncedDestination = useDebounce(destination, 500);
@@ -50,9 +55,19 @@ const AddTrip = () => {
       });
   };
 
-  const submit = () => {
-    if (!form.name || !form.destination) return;
-    console.log(form);
+  const submit = async () => {
+    if (!form.name || !form.destination || !user) return;
+    const query = {
+      ...form,
+      owner: user.accountId,
+    };
+
+    const result = await useAddTravel(query);
+    if (!result) {
+      console.log("Error");
+    } else {
+      router.back();
+    }
   };
 
   useEffect(() => {
@@ -121,15 +136,59 @@ const AddTrip = () => {
             </View>
 
             {form.destination && (
-              <FormField
-                title="name"
-                placeholder="Enter trip name"
-                otherStyles="my-2"
-                value={form.name}
-                handleChangeText={(e: string) =>
-                  setForm((prev) => ({ ...prev, name: e }))
-                }
-              />
+              <>
+                <FormField
+                  title="name"
+                  placeholder="Enter trip name"
+                  otherStyles="mt-2"
+                  value={form.name}
+                  handleChangeText={(e: string) =>
+                    setForm((prev) => ({ ...prev, name: e }))
+                  }
+                />
+                <View className="flex-row items-center  justify-between mt-4">
+                  <Text className="text-white font-psemibold">Start Date:</Text>
+                  <DatePicker
+                    mode="date"
+                    value={form.startDate}
+                    onChange={(e, selectedDate) => {
+                      if (selectedDate && form.endDate < selectedDate) {
+                        setForm((prev) => ({
+                          ...prev,
+                          endDate: selectedDate,
+                          startDate: selectedDate,
+                        }));
+                      } else {
+                        setForm((prev) => ({
+                          ...prev,
+                          startDate: selectedDate || prev.startDate,
+                        }));
+                      }
+                    }}
+                  />
+                </View>
+                <View className="flex-row items-center justify-between mt-4">
+                  <Text className="text-white font-psemibold">End Date:</Text>
+                  <DatePicker
+                    mode="date"
+                    value={form.endDate}
+                    onChange={(e, selectedDate) => {
+                      if (selectedDate && form.startDate > selectedDate) {
+                        setForm((prev) => ({
+                          ...prev,
+                          startDate: selectedDate,
+                          endDate: selectedDate,
+                        }));
+                      } else {
+                        setForm((prev) => ({
+                          ...prev,
+                          endDate: selectedDate || prev.endDate,
+                        }));
+                      }
+                    }}
+                  />
+                </View>
+              </>
             )}
 
             <CustomButton

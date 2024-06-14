@@ -9,11 +9,13 @@ import {
 
 export interface ITravelState {
   travelList: any[];
+  setTravelList: (travelList: any[]) => void;
   isLoading: boolean;
 }
 
 const defaultTravelState: ITravelState = {
   travelList: [],
+  setTravelList: () => {},
   isLoading: true,
 };
 
@@ -46,7 +48,7 @@ const TravelProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <TravelContext.Provider value={{ travelList, isLoading }}>
+    <TravelContext.Provider value={{ travelList, isLoading, setTravelList }}>
       {children}
     </TravelContext.Provider>
   );
