@@ -1,10 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/App.{js,jsx,ts,tsx}", "./src/app/**/*.{js,jsx,ts,tsx}", "./src/components/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/App.{js,jsx,ts,tsx}",
+    "./src/app/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        primary: "#292929",
+        primary: {
+          DEFAULT: "#292929",
+          100: "#e5e5e5",
+          200: "#cccccc",
+          300: "#b2b2b2",
+          400: "#999999",
+          500: "#7f7f7f",
+          600: "#666666",
+          700: "#4c4c4c",
+          800: "#333333",
+          900: "#191919",
+        },
         secondary: {
           DEFAULT: "#5e54ce",
           100: "#e2e0f9",
@@ -24,7 +39,7 @@ module.exports = {
         },
         gray: {
           DEFAULT: "#CDCDE0",
-        }
+        },
       },
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],

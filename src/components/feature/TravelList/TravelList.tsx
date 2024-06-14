@@ -13,9 +13,13 @@ const TravelList = () => {
       <FlatList
         data={travelList}
         renderItem={({ item }) => <TravelListItem item={item} />}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.travelId}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <View className="h-3" />}
+        refreshing={false}
+        onRefresh={() => {}}
+        className="mt-5 min-h-[60vh]"
       />
       <CustomButton
         title="Add new travel"
