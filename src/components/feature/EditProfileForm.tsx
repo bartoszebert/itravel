@@ -61,13 +61,6 @@ const EditProfileForm = () => {
         containerStyles="mt-5 w-full bg-secondary"
         textStyles="text-white"
       />
-
-      <CustomButton
-        title="Cancel"
-        handlePress={() => router.push("/profile")}
-        containerStyles="mt-3 w-full bg-white"
-        textStyles="text-primary"
-      />
     </View>
   );
 };

@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 
-const AddTravel = () => {
+const EditTrip = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -15,7 +15,7 @@ const AddTravel = () => {
       <SafeAreaView className="bg-primary h-full">
         <View className="pt-20 px-10">
           <Text className="text-white text-2xl font-psemibold mb-5 text-center">
-            Add New Travel
+            Add New Trip
           </Text>
         </View>
       </SafeAreaView>
@@ -23,4 +23,4 @@ const AddTravel = () => {
   );
 };
 
-export default AddTravel;
+export default EditTrip;

@@ -1,4 +1,6 @@
 import EditProfileForm from "@/components/feature/EditProfileForm";
+import CustomButton from "@/components/ui/CustomButton";
+import { router } from "expo-router";
 import React from "react";
 import {
   KeyboardAvoidingView,
@@ -21,6 +23,12 @@ const EditProfile = () => {
               Edit your profile:
             </Text>
             <EditProfileForm />
+            <CustomButton
+              title="Cancel"
+              handlePress={() => router.back()}
+              containerStyles="mt-3 w-full bg-white"
+              textStyles="text-primary"
+            />
           </View>
         </ScrollView>
       </SafeAreaView>

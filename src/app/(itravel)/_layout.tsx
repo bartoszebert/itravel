@@ -51,15 +51,15 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="travels"
+        name="(trips)"
         options={{
-          title: "Travels",
+          title: "Trips",
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               icon={icons.travel}
               color={color}
-              name="Travels"
+              name="Trips"
               focused={focused}
             />
           ),
@@ -96,7 +96,7 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="(profile)"
         options={{
           title: "Profile",
           headerShown: false,
@@ -109,14 +109,6 @@ const TabsLayout = () => {
             />
           ),
         }}
-      />
-      <Tabs.Screen
-        name="(manage)/editProfile"
-        options={{ headerShown: false, href: null }}
-      />
-      <Tabs.Screen
-        name="(manage)/addTravel"
-        options={{ headerShown: false, href: null }}
       />
     </Tabs>
   );

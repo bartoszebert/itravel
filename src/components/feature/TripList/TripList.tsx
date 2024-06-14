@@ -3,16 +3,16 @@ import { useTravelContext } from "@/context/TravelProvider";
 import { router } from "expo-router";
 import React from "react";
 import { FlatList, View } from "react-native";
-import TravelListItem from "./TravelListItem";
+import TripListItem from "./TripListItem";
 
-const TravelList = () => {
+const TripList = () => {
   const { travelList } = useTravelContext();
 
   return (
     <View>
       <FlatList
         data={travelList}
-        renderItem={({ item }) => <TravelListItem item={item} />}
+        renderItem={({ item }) => <TripListItem item={item} />}
         keyExtractor={(item) => item.travelId}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -22,12 +22,12 @@ const TravelList = () => {
         className="mt-5 min-h-[60vh]"
       />
       <CustomButton
-        title="Add new travel"
-        handlePress={() => router.push("addTravel")}
+        title="Add new trip"
+        handlePress={() => router.push("addTrip")}
         containerStyles="mt-5"
       />
     </View>
   );
 };
 
-export default TravelList;
+export default TripList;

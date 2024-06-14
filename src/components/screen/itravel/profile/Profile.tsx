@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import UserDetails from "../../feature/UserDetails";
+import UserDetails from "../../../feature/UserDetails";
 
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
