@@ -1,3 +1,4 @@
+import useDeleteTravel from "@/api/travelList/useDeleteTravel";
 import useGetTravelList from "@/api/travelList/useGetTravelList";
 import CustomButton from "@/components/ui/CustomButton";
 import { useTravelContext } from "@/context/TravelProvider";
@@ -18,6 +19,11 @@ const TripList = () => {
     }
   };
 
+  const deleteItem = async (id: string) => {
+    useDeleteTravel(id);
+    refetchTravels();
+  };
+
   useEffect(() => {
     refetchTravels();
   }, []);
@@ -26,7 +32,9 @@ const TripList = () => {
     <View>
       <FlatList
         data={travelList}
-        renderItem={({ item }) => <TripListItem item={item} />}
+        renderItem={({ item }) => (
+          <TripListItem item={item} handleDelete={() => deleteItem(item.$id)} />
+        )}
         keyExtractor={(item) => item.travelId}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
