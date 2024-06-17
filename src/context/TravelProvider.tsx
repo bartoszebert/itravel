@@ -11,12 +11,14 @@ export interface ITravelState {
   travelList: any[];
   setTravelList: (travelList: any[]) => void;
   isLoading: boolean;
+  getTravels: () => void;
 }
 
 const defaultTravelState: ITravelState = {
   travelList: [],
   setTravelList: () => {},
   isLoading: true,
+  getTravels: () => {},
 };
 
 const TravelContext = createContext<ITravelState>(defaultTravelState);
@@ -30,25 +32,27 @@ const TravelProvider = ({ children }: Props) => {
   const [travelList, setTravelList] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const updateTravels = async () => {
-      setIsLoading(true);
-      try {
-        const res = await useGetTravelList();
-        console.log(res);
-        setTravelList(res);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const getTravels = async () => {
+    setIsLoading(true);
+    try {
+      const res = await useGetTravelList();
+      console.log(res);
+      setTravelList(res);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    updateTravels();
+  useEffect(() => {
+    getTravels();
   }, []);
 
   return (
-    <TravelContext.Provider value={{ travelList, isLoading, setTravelList }}>
+    <TravelContext.Provider
+      value={{ travelList, isLoading, setTravelList, getTravels }}
+    >
       {children}
     </TravelContext.Provider>
   );

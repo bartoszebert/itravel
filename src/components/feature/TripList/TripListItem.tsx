@@ -1,13 +1,17 @@
+import useDeleteTravel from "@/api/travelList/useDeleteTravel";
+import SwipeableDeleteItem from "@/components/ui/SwipeableDeleteItem";
+import { useTravelContext } from "@/context/TravelProvider";
 import { daysBetweenDates } from "@/utils/daysBetweenDates";
 import { daysUntilDate } from "@/utils/daysUntilDate";
 import { parseDate } from "@/utils/parseDate";
-import React, { useRef } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
 interface ITravelListItem {
   item: {
+    $id: string;
     travelId: string;
     name: string;
     startDate: string;
@@ -18,14 +22,13 @@ interface ITravelListItem {
     budget: number;
     owner: string;
   };
-  handleDelete: () => void;
 }
 
 let rowRefs = new Map();
 
-const TravelListItem = ({ item, handleDelete }: ITravelListItem) => {
-  const { name, photo, startDate, endDate, travelId } = item;
-  const swipeableRef = useRef<Swipeable>(null);
+const TravelListItem = ({ item }: ITravelListItem) => {
+  const { name, photo, startDate, endDate, travelId, $id } = item;
+  const { getTravels } = useTravelContext();
 
   const renderDaysCount = () => {
     const days = daysBetweenDates(startDate, endDate);
@@ -37,30 +40,25 @@ const TravelListItem = ({ item, handleDelete }: ITravelListItem) => {
     return days > 1 ? `${days} days` : `${days} day`;
   };
 
-  const rightSwipe = () => (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      onPress={handleDelete}
-      className="bg-red-800 justify-center p-5 ml-1 rounded-lg"
-    >
-      <View>
-        <Text className="text-white font-pmedium">Delete</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  const deleteItem = async () => {
+    useDeleteTravel($id);
+    getTravels();
+  };
 
   return (
     <GestureHandlerRootView>
       <Swipeable
-        renderRightActions={rightSwipe}
+        renderRightActions={() => (
+          <SwipeableDeleteItem handleDelete={deleteItem} />
+        )}
         ref={(ref) => {
-          if (ref && !rowRefs.get(item.travelId)) {
-            rowRefs.set(item.travelId, ref);
+          if (ref && !rowRefs.get(travelId)) {
+            rowRefs.set(travelId, ref);
           }
         }}
         onSwipeableWillOpen={() => {
           [...rowRefs.entries()].forEach(([key, ref]) => {
-            if (key !== item.travelId && ref) ref.close();
+            if (key !== travelId && ref) ref.close();
           });
         }}
       >
