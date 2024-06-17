@@ -1,27 +1,26 @@
+import useGetPhoto from "@/api/pexels/useGetPhoto";
 import useAddTravel from "@/api/travelList/useAddTravel";
 import useGetLocations from "@/api/useGetLocations";
-import usePexels from "@/api/usePexels";
 import CustomButton from "@/components/ui/CustomButton";
-import CustomDatePicker from "@/components/ui/CustomDatePicker";
+import DatePickerField from "@/components/ui/DatePickerField";
 import FormField from "@/components/ui/FormField";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import useDebounce from "@/hooks/useDebounce";
 import { IAddTripForm } from "@/interfaces/IAddTripForm";
 import { defaultTrip } from "@/utils/defaultTrip";
 import { router } from "expo-router";
-import { PhotosWithTotalResults } from "pexels";
 import React, { useEffect, useState } from "react";
 import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
   SafeAreaView,
   ScrollView,
   Text,
   View,
 } from "react-native";
+import LocationListItem from "./LocationListItem";
 
 const AddTrip = () => {
   const { user } = useGlobalContext();
@@ -31,25 +30,9 @@ const AddTrip = () => {
   const [form, setForm] = useState<IAddTripForm>(defaultTrip);
 
   const debouncedDestination = useDebounce(destination, 500);
+
   const { refetch, data } = useGetLocations(debouncedDestination);
-
-  // separate to a custom hook
-  const getPhoto = async (query: string) => {
-    const pexelsClient = usePexels();
-
-    pexelsClient.photos
-      .search({ query: query, per_page: 1 })
-      .then((res) => {
-        const photosWithResults = res as PhotosWithTotalResults;
-        setForm((prev) => ({
-          ...prev,
-          photo: photosWithResults.photos[0].src.medium,
-        }));
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  const { getPhoto, photoUrl } = useGetPhoto();
 
   const submit = async () => {
     if (!form.name || !form.destination || !user) return;
@@ -59,30 +42,30 @@ const AddTrip = () => {
     };
 
     const result = await useAddTravel(query);
-    if (!result) {
-      console.log("Error");
-    } else {
-      router.push("/trips");
-    }
+    if (!result) console.log("Error");
+
+    router.push("/trips");
   };
 
-  const handleSetDate = (date: Date | undefined, type: "start" | "end") => {
+  const handleSetStartDate = (date: Date | undefined) => {
     setForm((prev) => {
-      if (type === "start") {
-        const newStartDate = date || prev.startDate;
-        return {
-          ...prev,
-          startDate: newStartDate,
-          endDate: prev.endDate < newStartDate ? newStartDate : prev.endDate,
-        };
-      } else {
-        const newEndDate = date || prev.endDate;
-        return {
-          ...prev,
-          endDate: newEndDate,
-          startDate: prev.startDate > newEndDate ? newEndDate : prev.startDate,
-        };
-      }
+      const newStartDate = date || prev.startDate;
+      return {
+        ...prev,
+        startDate: newStartDate,
+        endDate: prev.endDate < newStartDate ? newStartDate : prev.endDate,
+      };
+    });
+  };
+
+  const handleSetEndDate = (date: Date | undefined) => {
+    setForm((prev) => {
+      const newEndDate = date || prev.endDate;
+      return {
+        ...prev,
+        endDate: newEndDate,
+        startDate: prev.startDate > newEndDate ? newEndDate : prev.startDate,
+      };
     });
   };
 
@@ -96,6 +79,14 @@ const AddTrip = () => {
     setLocations(data);
   }, [data]);
 
+  useEffect(() => {
+    if (!photoUrl) return;
+    setForm((prev) => ({
+      ...prev,
+      photo: photoUrl,
+    }));
+  }, [photoUrl]);
+
   return (
     <SafeAreaView className="flex-1 bg-primary h-full">
       <KeyboardAvoidingView
@@ -108,7 +99,6 @@ const AddTrip = () => {
               Add New Trip
             </Text>
 
-            {/* Separate component */}
             {form.photo && (
               <View className="flex justify-center items-center">
                 <Image
@@ -128,11 +118,11 @@ const AddTrip = () => {
 
             <View className="flex justify-center items-center">
               {destination &&
-                locations.length !== 0 &&
                 locations.map((item) => (
-                  <Pressable
+                  <LocationListItem
                     key={item.place_id}
-                    onPress={() => {
+                    item={item}
+                    onSelect={() => {
                       setForm((prev) => ({
                         ...prev,
                         destination: item.formatted,
@@ -141,15 +131,7 @@ const AddTrip = () => {
                       setLocations([]);
                       Keyboard.dismiss();
                     }}
-                    className="rounded-xl w-full bg-primary-800 mt-1 z-50"
-                  >
-                    <View className="items-start py-3 px-5">
-                      <Text className="text-white font-psemibold">
-                        {item.address_line1}
-                      </Text>
-                      <Text className="text-white">{item.address_line2}</Text>
-                    </View>
-                  </Pressable>
+                  />
                 ))}
             </View>
 
@@ -164,20 +146,16 @@ const AddTrip = () => {
                     setForm((prev) => ({ ...prev, name: e }))
                   }
                 />
-                <View className="flex-row items-center  justify-between mt-4">
-                  <Text className="text-white font-psemibold">Start Date:</Text>
-                  <CustomDatePicker
-                    date={form.startDate}
-                    setDate={(date) => handleSetDate(date, "start")}
-                  />
-                </View>
-                <View className="flex-row items-center justify-between mt-4">
-                  <Text className="text-white font-psemibold">End Date:</Text>
-                  <CustomDatePicker
-                    date={form.endDate}
-                    setDate={(date) => handleSetDate(date, "end")}
-                  />
-                </View>
+                <DatePickerField
+                  label="Start Date"
+                  date={form.startDate}
+                  onSetDate={handleSetStartDate}
+                />
+                <DatePickerField
+                  label="End Date"
+                  date={form.endDate}
+                  onSetDate={handleSetEndDate}
+                />
               </>
             )}
 
