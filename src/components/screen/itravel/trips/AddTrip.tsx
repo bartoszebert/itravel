@@ -66,7 +66,7 @@ const AddTrip = () => {
     if (!result) {
       console.log("Error");
     } else {
-      router.back();
+      router.push("/trips");
     }
   };
 
