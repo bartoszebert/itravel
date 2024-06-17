@@ -6,6 +6,8 @@ import CustomDatePicker from "@/components/ui/CustomDatePicker";
 import FormField from "@/components/ui/FormField";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import useDebounce from "@/hooks/useDebounce";
+import { IAddTripForm } from "@/interfaces/IAddTripForm";
+import { defaultTrip } from "@/utils/defaultTrip";
 import { router } from "expo-router";
 import { PhotosWithTotalResults } from "pexels";
 import React, { useEffect, useState } from "react";
@@ -26,17 +28,12 @@ const AddTrip = () => {
 
   const [destination, setDestination] = useState<string>("");
   const [locations, setLocations] = useState<any[]>([]);
-  const [form, setForm] = useState({
-    destination: "",
-    name: "",
-    photo: "",
-    startDate: new Date(),
-    endDate: new Date(),
-  });
+  const [form, setForm] = useState<IAddTripForm>(defaultTrip);
 
   const debouncedDestination = useDebounce(destination, 500);
   const { refetch, data } = useGetLocations(debouncedDestination);
 
+  // separate to a custom hook
   const getPhoto = async (query: string) => {
     const pexelsClient = usePexels();
 
@@ -69,6 +66,26 @@ const AddTrip = () => {
     }
   };
 
+  const handleSetDate = (date: Date | undefined, type: "start" | "end") => {
+    setForm((prev) => {
+      if (type === "start") {
+        const newStartDate = date || prev.startDate;
+        return {
+          ...prev,
+          startDate: newStartDate,
+          endDate: prev.endDate < newStartDate ? newStartDate : prev.endDate,
+        };
+      } else {
+        const newEndDate = date || prev.endDate;
+        return {
+          ...prev,
+          endDate: newEndDate,
+          startDate: prev.startDate > newEndDate ? newEndDate : prev.startDate,
+        };
+      }
+    });
+  };
+
   useEffect(() => {
     setLocations([]);
     refetch(debouncedDestination);
@@ -90,6 +107,8 @@ const AddTrip = () => {
             <Text className="text-white text-2xl font-psemibold mb-5 text-center">
               Add New Trip
             </Text>
+
+            {/* Separate component */}
             {form.photo && (
               <View className="flex justify-center items-center">
                 <Image
@@ -149,40 +168,14 @@ const AddTrip = () => {
                   <Text className="text-white font-psemibold">Start Date:</Text>
                   <CustomDatePicker
                     date={form.startDate}
-                    setDate={(date) => {
-                      if (date && form.endDate < date) {
-                        setForm((prev) => ({
-                          ...prev,
-                          endDate: date,
-                          startDate: date,
-                        }));
-                      } else {
-                        setForm((prev) => ({
-                          ...prev,
-                          startDate: date || prev.startDate,
-                        }));
-                      }
-                    }}
+                    setDate={(date) => handleSetDate(date, "start")}
                   />
                 </View>
                 <View className="flex-row items-center justify-between mt-4">
                   <Text className="text-white font-psemibold">End Date:</Text>
                   <CustomDatePicker
                     date={form.endDate}
-                    setDate={(date) => {
-                      if (date && form.startDate > date) {
-                        setForm((prev) => ({
-                          ...prev,
-                          startDate: date,
-                          endDate: date,
-                        }));
-                      } else {
-                        setForm((prev) => ({
-                          ...prev,
-                          endDate: date || prev.endDate,
-                        }));
-                      }
-                    }}
+                    setDate={(date) => handleSetDate(date, "end")}
                   />
                 </View>
               </>

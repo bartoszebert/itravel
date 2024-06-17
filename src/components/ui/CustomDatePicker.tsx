@@ -1,7 +1,7 @@
 import { parseDate } from "@/utils/parseDate";
 import DatePicker from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
-import { Modal, Pressable, Text, View } from "react-native";
+import { Keyboard, Modal, Pressable, Text, View } from "react-native";
 import CustomButton from "./CustomButton";
 
 interface IProps {
@@ -16,7 +16,10 @@ const CustomDatePicker = ({ date, setDate }: IProps) => {
     <>
       <Pressable
         className="bg-primary-800 px-4 py-1 rounded-lg"
-        onPress={() => setShow(true)}
+        onPress={() => {
+          setShow(true);
+          Keyboard.dismiss();
+        }}
       >
         <Text className="text-white text-lg ">
           {parseDate(date.toString())}
