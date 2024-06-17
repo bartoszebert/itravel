@@ -11,9 +11,6 @@ const useDeleteTravel = async (travelId: string) => {
       travelCollectionId,
       travelId
     );
-
-    console.log(deleteTravel);
-
     return deleteTravel;
   } catch (error) {
     console.log(error);

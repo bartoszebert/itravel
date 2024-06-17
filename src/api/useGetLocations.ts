@@ -12,7 +12,6 @@ const useGetLocations = (search: string) => {
       const res = await fetch(url);
       const data = await res.json();
       setData(data.results);
-      console.log(data.results);
     } catch (e) {
       console.log(e);
     }

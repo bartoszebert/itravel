@@ -2,10 +2,10 @@ import useAddTravel from "@/api/travelList/useAddTravel";
 import useGetLocations from "@/api/useGetLocations";
 import usePexels from "@/api/usePexels";
 import CustomButton from "@/components/ui/CustomButton";
+import CustomDatePicker from "@/components/ui/CustomDatePicker";
 import FormField from "@/components/ui/FormField";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import useDebounce from "@/hooks/useDebounce";
-import DatePicker from "@react-native-community/datetimepicker";
 import { router } from "expo-router";
 import { PhotosWithTotalResults } from "pexels";
 import React, { useEffect, useState } from "react";
@@ -44,7 +44,6 @@ const AddTrip = () => {
       .search({ query: query, per_page: 1 })
       .then((res) => {
         const photosWithResults = res as PhotosWithTotalResults;
-        console.log(photosWithResults.photos[0].src.medium);
         setForm((prev) => ({
           ...prev,
           photo: photosWithResults.photos[0].src.medium,
@@ -148,20 +147,19 @@ const AddTrip = () => {
                 />
                 <View className="flex-row items-center  justify-between mt-4">
                   <Text className="text-white font-psemibold">Start Date:</Text>
-                  <DatePicker
-                    mode="date"
-                    value={form.startDate}
-                    onChange={(e, selectedDate) => {
-                      if (selectedDate && form.endDate < selectedDate) {
+                  <CustomDatePicker
+                    date={form.startDate}
+                    setDate={(date) => {
+                      if (date && form.endDate < date) {
                         setForm((prev) => ({
                           ...prev,
-                          endDate: selectedDate,
-                          startDate: selectedDate,
+                          endDate: date,
+                          startDate: date,
                         }));
                       } else {
                         setForm((prev) => ({
                           ...prev,
-                          startDate: selectedDate || prev.startDate,
+                          startDate: date || prev.startDate,
                         }));
                       }
                     }}
@@ -169,20 +167,19 @@ const AddTrip = () => {
                 </View>
                 <View className="flex-row items-center justify-between mt-4">
                   <Text className="text-white font-psemibold">End Date:</Text>
-                  <DatePicker
-                    mode="date"
-                    value={form.endDate}
-                    onChange={(e, selectedDate) => {
-                      if (selectedDate && form.startDate > selectedDate) {
+                  <CustomDatePicker
+                    date={form.endDate}
+                    setDate={(date) => {
+                      if (date && form.startDate > date) {
                         setForm((prev) => ({
                           ...prev,
-                          startDate: selectedDate,
-                          endDate: selectedDate,
+                          startDate: date,
+                          endDate: date,
                         }));
                       } else {
                         setForm((prev) => ({
                           ...prev,
-                          endDate: selectedDate || prev.endDate,
+                          endDate: date || prev.endDate,
                         }));
                       }
                     }}

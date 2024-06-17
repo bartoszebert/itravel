@@ -36,7 +36,6 @@ const TravelProvider = ({ children }: Props) => {
     setIsLoading(true);
     try {
       const res = await useGetTravelList();
-      console.log(res);
       setTravelList(res);
     } catch (err) {
       console.log(err);
