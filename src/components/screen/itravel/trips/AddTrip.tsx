@@ -119,7 +119,7 @@ const AddTrip = () => {
                         ...prev,
                         destination: item.formatted,
                       }));
-                      getPhoto(item.country);
+                      getPhoto(`${item.country} ${item.city}`);
                       setLocations([]);
                       Keyboard.dismiss();
                     }}
