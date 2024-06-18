@@ -4,8 +4,9 @@ import { useTravelContext } from "@/context/TravelProvider";
 import { daysBetweenDates } from "@/utils/daysBetweenDates";
 import { daysUntilDate } from "@/utils/daysUntilDate";
 import { parseDate } from "@/utils/parseDate";
+import { router } from "expo-router";
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
@@ -62,26 +63,28 @@ const TravelListItem = ({ item }: ITravelListItem) => {
           });
         }}
       >
-        <View className="bg-primary-800 rounded-lg flex-row items-center">
-          <Image
-            source={{ uri: photo }}
-            className="w-[100px] h-[100px] rounded-lg"
-            resizeMode="cover"
-          />
-          <View className="px-3 gap-1">
-            <Text className="text-white text-sm font-psemibold">{name}</Text>
-            <View>
+        <Pressable onPress={() => router.push(`/details/${$id}`)}>
+          <View className="bg-primary-800 rounded-lg flex-row items-center">
+            <Image
+              source={{ uri: photo }}
+              className="w-[100px] h-[100px] rounded-lg"
+              resizeMode="cover"
+            />
+            <View className="px-3 gap-1">
+              <Text className="text-white text-sm font-psemibold">{name}</Text>
+              <View>
+                <Text className="text-white text-xs">
+                  {parseDate(startDate)} - {parseDate(endDate)}
+                </Text>
+                <Text className="text-white text-xs">{renderDaysCount()}</Text>
+              </View>
               <Text className="text-white text-xs">
-                {parseDate(startDate)} - {parseDate(endDate)}
+                <Text className="font-psemibold">Starts in </Text>
+                {renderDaysUntilStart()}
               </Text>
-              <Text className="text-white text-xs">{renderDaysCount()}</Text>
             </View>
-            <Text className="text-white text-xs">
-              <Text className="font-psemibold">Starts in </Text>
-              {renderDaysUntilStart()}
-            </Text>
           </View>
-        </View>
+        </Pressable>
       </Swipeable>
     </GestureHandlerRootView>
   );
