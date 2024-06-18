@@ -1,16 +1,12 @@
 import CustomButton from "@/components/ui/CustomButton";
-import { useTravelContext } from "@/context/TravelProvider";
+import useTripList from "@/hooks/itravel/useTripList";
 import { router } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 import { FlatList, View } from "react-native";
 import TripListItem from "./TripListItem";
 
 const TripList = () => {
-  const { travelList, getTravels } = useTravelContext();
-
-  useEffect(() => {
-    getTravels();
-  }, []);
+  const { travelList, getTravels, isLoading } = useTripList();
 
   return (
     <View>
@@ -21,7 +17,7 @@ const TripList = () => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View className="h-3" />}
-        refreshing={false}
+        refreshing={isLoading}
         onRefresh={getTravels}
         className="mt-5 min-h-[60vh]"
       />

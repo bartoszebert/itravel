@@ -1,19 +1,13 @@
-import useGetTravelList from "@/api/travelList/useGetTravelList";
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import useTravelData from "@/hooks/itravel/useTravelData";
 import { ITravelState } from "@/interfaces/ITravelState";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 const defaultTravelState: ITravelState = {
   travelList: [],
   setTravelList: () => {},
   isLoading: true,
   getTravels: () => {},
+  error: null,
 };
 
 const TravelContext = createContext<ITravelState>(defaultTravelState);
@@ -24,28 +18,11 @@ interface Props {
 }
 
 const TravelProvider = ({ children }: Props) => {
-  const [travelList, setTravelList] = useState<ITravelItem[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const getTravels = async () => {
-    setIsLoading(true);
-    try {
-      const res = await useGetTravelList();
-      setTravelList(res);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getTravels();
-  }, []);
-
+  const { travelList, setTravelList, isLoading, getTravels, error } =
+    useTravelData();
   return (
     <TravelContext.Provider
-      value={{ travelList, isLoading, setTravelList, getTravels }}
+      value={{ travelList, isLoading, error, setTravelList, getTravels }}
     >
       {children}
     </TravelContext.Provider>

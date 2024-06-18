@@ -5,4 +5,5 @@ export interface ITravelState {
   setTravelList: (travelList: ITravelItem[]) => void;
   isLoading: boolean;
   getTravels: () => void;
+  error: Error | null;
 }
