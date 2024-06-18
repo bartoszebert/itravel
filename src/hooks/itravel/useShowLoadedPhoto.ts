@@ -1,5 +1,5 @@
-import useGetPhoto from "@/api/pexels/useGetPhoto";
 import { useEffect } from "react";
+import useGetPhoto from "../useGetPhoto";
 
 const useShowLoadedPhoto = (
   trigger: string,

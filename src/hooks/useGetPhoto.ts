@@ -1,6 +1,6 @@
+import initializePexels from "@/api/initializePexels";
 import { PhotosWithTotalResults } from "pexels";
 import { useCallback, useState } from "react";
-import initializePexels from "../initializePexels";
 
 const useGetPhoto = () => {
   const [photoUrl, setPhotoUrl] = useState<string>("");

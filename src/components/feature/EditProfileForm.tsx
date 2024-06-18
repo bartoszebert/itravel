@@ -1,4 +1,4 @@
-import updateUser from "@/api/auth/useUpdateUser";
+import updateUser from "@/api/auth/updateUser";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { IUserForm } from "@/interfaces/IUserForm";
 import { editProfileFormFields } from "@/utils/editProfileFormFields";

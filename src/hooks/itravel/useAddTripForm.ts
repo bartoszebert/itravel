@@ -1,5 +1,5 @@
+import useGetLocations from "@/api/getLocations";
 import addTravel from "@/api/travelList/addTravel";
-import useGetLocations from "@/api/useGetLocations";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { IAddTripForm } from "@/interfaces/IAddTripForm";
 import { ILocation } from "@/interfaces/ILocation";
