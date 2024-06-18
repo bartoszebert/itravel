@@ -1,0 +1,24 @@
+import { Image, Text, View } from "react-native";
+
+interface Props {
+  icon: any;
+  color: string;
+  name: string;
+}
+
+const TabIcon = ({ icon, color, name }: Props) => {
+  return (
+    <View className="items-center justify-center gap-2">
+      <Image
+        source={icon}
+        resizeMode="contain"
+        tintColor={color}
+        className="w-6 h-6"
+      />
+      <Text className={"text-xs font-pregular"} style={{ color: color }}>
+        {name}
+      </Text>
+    </View>
+  );
+};
+export default TabIcon;
