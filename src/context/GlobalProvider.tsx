@@ -1,24 +1,16 @@
-import useGetCurrentUser from "@/api/auth/useGetCurrentUser";
+import useGlobalState from "@/hooks/useGlobalState";
 import { IGlobalState } from "@/interfaces/IGlobalInterface";
-import { IUser } from "@/interfaces/IUser";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 const defaultGlobalState: IGlobalState = {
   isLogged: false,
   user: null,
   isLoading: true,
-  setIsLogged: (isLogged) => {},
-  setUser: (user) => {},
+  setIsLogged: () => {},
+  setUser: () => {},
 };
 
 const GlobalContext = createContext<IGlobalState>(defaultGlobalState);
-
 export const useGlobalContext = () => useContext(GlobalContext);
 
 interface Props {
@@ -26,32 +18,7 @@ interface Props {
 }
 
 const GlobalProvider = ({ children }: Props) => {
-  const [isLogged, setIsLogged] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const updateUserStatus = async () => {
-      setIsLoading(true);
-      try {
-        const res = await useGetCurrentUser();
-        if (res) {
-          setIsLogged(true);
-          setUser(res);
-        } else {
-          setIsLogged(false);
-          setUser(null);
-        }
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    updateUserStatus();
-  }, []);
-
+  const { isLogged, setIsLogged, user, setUser, isLoading } = useGlobalState();
   return (
     <GlobalContext.Provider
       value={{ isLogged, setIsLogged, user, setUser, isLoading }}
