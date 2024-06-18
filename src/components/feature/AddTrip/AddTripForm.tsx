@@ -1,11 +1,11 @@
 import CustomButton from "@/components/ui/CustomButton";
-import DatePickerField from "@/components/ui/DatePickerField";
 import FormField from "@/components/ui/FormField";
 import useAddTripForm from "@/hooks/itravel/useAddTripForm";
 import { router } from "expo-router";
 import { Text, View } from "react-native";
-import LocationListItem from "../../ui/LocationListItem";
+import LocationList from "./LocationList";
 import ShowLoadedPhoto from "./ShowLoadedPhoto";
+import TripDetailsForm from "./TripDetailsForm";
 
 const AddTripForm = () => {
   const {
@@ -39,39 +39,20 @@ const AddTripForm = () => {
         handleChangeText={(e: string) => setDestination(e)}
       />
 
-      <View className="flex justify-center items-center">
-        {destination &&
-          locations.map((item) => (
-            <LocationListItem
-              key={item.place_id}
-              item={item}
-              onSelect={() => handleSelectLocation(item)}
-            />
-          ))}
-      </View>
+      {destination && (
+        <LocationList
+          locations={locations}
+          handleSelectLocation={handleSelectLocation}
+        />
+      )}
 
       {form.destination && (
-        <>
-          <FormField
-            title="name"
-            placeholder="Enter trip name"
-            otherStyles="mt-2"
-            value={form.name}
-            handleChangeText={(e: string) =>
-              setForm((prev) => ({ ...prev, name: e }))
-            }
-          />
-          <DatePickerField
-            label="Start Date"
-            date={form.startDate}
-            onSetDate={handleSetStartDate}
-          />
-          <DatePickerField
-            label="End Date"
-            date={form.endDate}
-            onSetDate={handleSetEndDate}
-          />
-        </>
+        <TripDetailsForm
+          form={form}
+          setForm={setForm}
+          handleSetStartDate={handleSetStartDate}
+          handleSetEndDate={handleSetEndDate}
+        />
       )}
 
       <CustomButton

@@ -4,11 +4,24 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import { IAddTripForm } from "@/interfaces/IAddTripForm";
 import { defaultTrip } from "@/utils/defaultTrip";
 import { router } from "expo-router";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Keyboard } from "react-native";
 import useDebounce from "../useDebounce";
 
-const useAddTripForm = () => {
+interface Props {
+  destination: string;
+  setDestination: Dispatch<SetStateAction<string>>;
+  locations: any[];
+  form: IAddTripForm;
+  setForm: Dispatch<SetStateAction<IAddTripForm>>;
+  handleSetPhoto: (photoUrl: string) => void;
+  handleSetStartDate: (date: Date | undefined) => void;
+  handleSetEndDate: (date: Date | undefined) => void;
+  handleSelectLocation: (item: any) => void;
+  submit: () => void;
+}
+
+const useAddTripForm = (): Props => {
   const { user } = useGlobalContext();
 
   const [destination, setDestination] = useState<string>("");
