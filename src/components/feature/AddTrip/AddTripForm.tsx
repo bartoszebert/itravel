@@ -1,4 +1,3 @@
-import useGetPhoto from "@/api/pexels/useGetPhoto";
 import useAddTravel from "@/api/travelList/useAddTravel";
 import useGetLocations from "@/api/useGetLocations";
 import CustomButton from "@/components/ui/CustomButton";
@@ -10,8 +9,9 @@ import { IAddTripForm } from "@/interfaces/IAddTripForm";
 import { defaultTrip } from "@/utils/defaultTrip";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { Image, Keyboard, Text, View } from "react-native";
+import { Keyboard, Text, View } from "react-native";
 import LocationListItem from "../../ui/LocationListItem";
+import ShowLoadedPhoto from "./ShowLoadedPhoto";
 
 const AddTripForm = () => {
   const { user } = useGlobalContext();
@@ -23,7 +23,13 @@ const AddTripForm = () => {
   const debouncedDestination = useDebounce(destination, 500);
 
   const { refetch, data } = useGetLocations(debouncedDestination);
-  const { getPhoto, photoUrl } = useGetPhoto();
+
+  const handleSetPhoto = (photoUrl: string) => {
+    setForm((prev) => ({
+      ...prev,
+      photo: photoUrl,
+    }));
+  };
 
   const handleSetStartDate = (date: Date | undefined) => {
     setForm((prev) => {
@@ -70,29 +76,16 @@ const AddTripForm = () => {
     setLocations(data);
   }, [data]);
 
-  useEffect(() => {
-    if (!photoUrl) return;
-    setForm((prev) => ({
-      ...prev,
-      photo: photoUrl,
-    }));
-  }, [photoUrl]);
-
   return (
     <View className="pt-20 px-10 h-full justify-start">
       <Text className="text-white text-2xl font-psemibold mb-5 text-center">
         Add New Trip
       </Text>
 
-      {form.photo && (
-        <View className="flex justify-center items-center">
-          <Image
-            source={{ uri: form.photo }}
-            className="rounded-lg h-[200px] w-full mb-5"
-            resizeMode="cover"
-          />
-        </View>
-      )}
+      <ShowLoadedPhoto
+        trigger={form.destination}
+        onPhotoFetched={handleSetPhoto}
+      />
 
       <FormField
         title="destination"
@@ -112,7 +105,6 @@ const AddTripForm = () => {
                   ...prev,
                   destination: item.formatted,
                 }));
-                getPhoto(`${item.country} ${item.city}`);
                 setLocations([]);
                 Keyboard.dismiss();
               }}
