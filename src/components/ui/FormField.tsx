@@ -1,5 +1,5 @@
 import { icons } from "@/constants";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image, TextInput, TouchableOpacity, View } from "react-native";
 
 interface Props {

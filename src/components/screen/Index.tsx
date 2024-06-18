@@ -6,7 +6,7 @@ import { Redirect, router } from "expo-router";
 import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Index() {
+const Index = () => {
   const { isLoading, isLogged } = useGlobalContext();
 
   if (!isLoading && isLogged) return <Redirect href="/home" />;
@@ -49,4 +49,6 @@ export default function Index() {
       </SafeAreaView>
     </View>
   );
-}
+};
+
+export default Index;

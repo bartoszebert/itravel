@@ -4,7 +4,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import "react-native-url-polyfill/auto";
 
-export default function RootLayout() {
+const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
     "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -33,4 +33,6 @@ export default function RootLayout() {
       </Stack>
     </GlobalProvider>
   );
-}
+};
+
+export default RootLayout;

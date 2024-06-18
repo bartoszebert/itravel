@@ -1,7 +1,6 @@
 import EditProfileForm from "@/components/feature/EditProfileForm";
 import CustomButton from "@/components/ui/CustomButton";
 import { router } from "expo-router";
-import React from "react";
 import {
   KeyboardAvoidingView,
   Platform,

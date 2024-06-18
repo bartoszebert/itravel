@@ -3,7 +3,7 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import { IUserForm } from "@/interfaces/IUserForm";
 import { editProfileFormFields } from "@/utils/editProfileFormFields";
 import { router } from "expo-router";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Image, View } from "react-native";
 import CustomButton from "../ui/CustomButton";
 import FormField from "../ui/FormField";

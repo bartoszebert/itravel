@@ -1,6 +1,6 @@
-import { View, Image, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
 import { icons } from "@/constants";
+import { useState } from "react";
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 
 interface Props {
   title: string;

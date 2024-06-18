@@ -1,17 +1,7 @@
-import React from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import TravelMates from "@/components/screen/itravel/TravelMates";
 
-const TravelMates = () => {
-  return (
-    <SafeAreaView className="bg-primary h-full">
-      <View className="pt-20">
-        <Text className="text-2xl font-pbold text-white text-center">
-          TravelMates
-        </Text>
-      </View>
-    </SafeAreaView>
-  );
+const TravelMatesPage = () => {
+  return <TravelMates />;
 };
 
-export default TravelMates;
+export default TravelMatesPage;

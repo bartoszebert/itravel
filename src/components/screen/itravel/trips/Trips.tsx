@@ -1,5 +1,4 @@
 import TripList from "@/components/feature/TripList/TripList";
-import React from "react";
 import { SafeAreaView, Text, View } from "react-native";
 
 const Trips = () => {

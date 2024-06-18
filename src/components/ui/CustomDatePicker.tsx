@@ -1,6 +1,6 @@
 import { parseDate } from "@/utils/parseDate";
 import DatePicker from "@react-native-community/datetimepicker";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Keyboard, Modal, Pressable, Text, View } from "react-native";
 import CustomButton from "./CustomButton";
 

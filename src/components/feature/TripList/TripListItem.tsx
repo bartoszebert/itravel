@@ -5,7 +5,6 @@ import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
 import { renderDaysUntilStart } from "@/utils/renderDaysUntilStart";
 import { router } from "expo-router";
-import React from "react";
 import { Image, Pressable, Text, View } from "react-native";
 
 interface IProps {

@@ -1,5 +1,4 @@
-import { TouchableOpacity, Text } from "react-native";
-import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 
 interface Props {
   title: string;
@@ -25,7 +24,9 @@ const CustomButton = ({
       }`}
       disabled={isLoading}
     >
-      <Text className={`text-secondary-800 font-psemibold text-lg ${textStyles}`}>
+      <Text
+        className={`text-secondary-800 font-psemibold text-lg ${textStyles}`}
+      >
         {title}
       </Text>
     </TouchableOpacity>

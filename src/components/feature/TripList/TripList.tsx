@@ -1,7 +1,6 @@
 import CustomButton from "@/components/ui/CustomButton";
 import useTripList from "@/hooks/itravel/useTripList";
 import { router } from "expo-router";
-import React from "react";
 import { FlatList, View } from "react-native";
 import TripListItem from "./TripListItem";
 

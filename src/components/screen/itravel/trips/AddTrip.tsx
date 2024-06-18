@@ -1,5 +1,4 @@
 import AddTripForm from "@/components/feature/AddTrip/AddTripForm";
-import React from "react";
 import {
   KeyboardAvoidingView,
   Platform,

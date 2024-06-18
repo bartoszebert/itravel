@@ -1,17 +1,7 @@
-import React from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import Discover from "@/components/screen/itravel/Discover";
 
-const Discover = () => {
-  return (
-    <SafeAreaView className="bg-primary h-full">
-      <View className="pt-20">
-        <Text className="text-2xl font-pbold text-white text-center">
-          Discover
-        </Text>
-      </View>
-    </SafeAreaView>
-  );
+const DiscoverPage = () => {
+  return <Discover />;
 };
 
-export default Discover;
+export default DiscoverPage;

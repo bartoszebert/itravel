@@ -1,6 +1,5 @@
 import getTabScreenOptions from "@/utils/getTabScreenOptions";
 import { Tabs } from "expo-router";
-import React from "react";
 import { icons } from "../../constants";
 
 const TabsLayout = () => {

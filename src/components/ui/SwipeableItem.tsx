@@ -1,5 +1,4 @@
 import SwipeableDeleteButton from "@/components/ui/SwipeableDeleteButton";
-import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 

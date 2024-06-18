@@ -1,5 +1,7 @@
-import Welcome from "@/components/screen/Welcome";
+import Index from "@/components/screen/Index";
 
-export default function IndexPage() {
-  return <Welcome />;
-}
+const IndexPage = () => {
+  return <Index />;
+};
+
+export default IndexPage;

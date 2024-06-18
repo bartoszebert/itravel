@@ -3,7 +3,7 @@ import useSignIn from "@/api/auth/useSignIn";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignInData } from "@/interfaces/ISignInData";
 import { Link, router } from "expo-router";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Alert,
   KeyboardAvoidingView,

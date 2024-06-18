@@ -2,7 +2,6 @@ import useSignOut from "@/api/auth/useSignOut";
 import CustomButton from "@/components/ui/CustomButton";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { router } from "expo-router";
-import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import UserDetails from "../../../feature/UserDetails";
