@@ -5,7 +5,7 @@ interface IProps {
   handleDelete: () => void;
 }
 
-const SwipeableDeleteItem = ({ handleDelete }: IProps) => (
+const SwipeableDeleteButton = ({ handleDelete }: IProps) => (
   <TouchableOpacity
     activeOpacity={0.7}
     onPress={handleDelete}
@@ -17,4 +17,4 @@ const SwipeableDeleteItem = ({ handleDelete }: IProps) => (
   </TouchableOpacity>
 );
 
-export default SwipeableDeleteItem;
+export default SwipeableDeleteButton;
