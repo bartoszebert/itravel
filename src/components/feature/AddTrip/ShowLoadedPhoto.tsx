@@ -1,5 +1,4 @@
-import useGetPhoto from "@/api/pexels/useGetPhoto";
-import { useEffect } from "react";
+import useShowLoadedPhoto from "@/hooks/itravel/useShowLoadedPhoto";
 import { ActivityIndicator, Image, Text, View } from "react-native";
 
 interface IProps {
@@ -8,17 +7,10 @@ interface IProps {
 }
 
 const ShowLoadedPhoto = ({ trigger, onPhotoFetched }: IProps) => {
-  const { getPhoto, photoUrl, isLoading, error } = useGetPhoto();
-
-  useEffect(() => {
-    if (!trigger) return;
-    getPhoto(trigger);
-  }, [trigger]);
-
-  useEffect(() => {
-    if (!photoUrl) return;
-    onPhotoFetched(photoUrl);
-  }, [photoUrl]);
+  const { photoUrl, isLoading, error } = useShowLoadedPhoto(
+    trigger,
+    onPhotoFetched
+  );
 
   if (isLoading)
     return <ActivityIndicator className="p-10" size="large" color="#fff" />;
