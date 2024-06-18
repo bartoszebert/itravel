@@ -1,14 +1,20 @@
 import { icons } from "@/constants";
 import { useState } from "react";
-import { Image, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  KeyboardType,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface Props {
   title: string;
   value: string;
   placeholder?: string;
   handleChangeText: (text: string) => void;
-  otherStyles?: any;
-  keyboardType?: any;
+  otherStyles?: string;
+  keyboardType?: KeyboardType;
   disabled?: boolean;
 }
 

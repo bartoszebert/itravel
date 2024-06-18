@@ -1,12 +1,13 @@
 import LocationListItem from "@/components/ui/LocationListItem";
+import { ILocation } from "@/interfaces/ILocation";
 import { View } from "react-native";
 
-interface IProps {
-  locations: any[];
-  handleSelectLocation: (item: any) => void;
+interface Props {
+  locations: ILocation[];
+  handleSelectLocation: (item: ILocation) => void;
 }
 
-const LocationList = ({ locations, handleSelectLocation }: IProps) => {
+const LocationList = ({ locations, handleSelectLocation }: Props) => {
   return (
     <View className="flex justify-center items-center">
       {locations.map((item) => (

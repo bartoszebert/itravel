@@ -1,15 +1,15 @@
 import { PhotosWithTotalResults } from "pexels";
-import { useState } from "react";
-import usePexels from "../usePexels";
+import { useCallback, useState } from "react";
+import initializePexels from "../initializePexels";
 
 const useGetPhoto = () => {
   const [photoUrl, setPhotoUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  const getPhoto = async (query: string) => {
+  const getPhoto = useCallback(async (query: string) => {
     setIsLoading(true);
-    const pexelsClient = usePexels();
+    const pexelsClient = initializePexels();
 
     pexelsClient.photos
       .search({ query: query, per_page: 1 })
@@ -22,7 +22,7 @@ const useGetPhoto = () => {
         console.log(e);
         setError("Failed to fetch the photo.");
       });
-  };
+  }, []);
 
   return { getPhoto, photoUrl, isLoading, error };
 };

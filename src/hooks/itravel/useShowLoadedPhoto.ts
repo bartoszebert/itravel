@@ -10,12 +10,12 @@ const useShowLoadedPhoto = (
   useEffect(() => {
     if (!trigger) return;
     getPhoto(trigger);
-  }, [trigger]);
+  }, [trigger, getPhoto]);
 
   useEffect(() => {
     if (!photoUrl) return;
     onPhotoFetched(photoUrl);
-  }, [photoUrl]);
+  }, [photoUrl, onPhotoFetched]);
 
   return { photoUrl, isLoading, error };
 };

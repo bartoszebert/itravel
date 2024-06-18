@@ -1,7 +1,7 @@
-import useAppwrite from "../useAppwrite";
+import initializeAppwrite from "../initializeAppwrite";
 
-const useSignIn = async (email: string, password: string) => {
-  const { account } = useAppwrite();
+const signIn = async (email: string, password: string) => {
+  const { account } = initializeAppwrite();
 
   try {
     const session = await account.createEmailPasswordSession(email, password);
@@ -12,4 +12,4 @@ const useSignIn = async (email: string, password: string) => {
   }
 };
 
-export default useSignIn;
+export default signIn;

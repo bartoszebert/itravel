@@ -1,11 +1,11 @@
 import { IUser } from "@/interfaces/IUser";
 import { Image, Text, View } from "react-native";
 
-interface IProps {
+interface Props {
   user: IUser | null;
 }
 
-const UserDetails = ({ user }: IProps) => {
+const UserDetails = ({ user }: Props) => {
   if (!user) return null;
 
   return (

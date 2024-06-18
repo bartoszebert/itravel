@@ -1,16 +1,17 @@
 import SwipeableDeleteButton from "@/components/ui/SwipeableDeleteButton";
+import { ReactNode } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-interface IProps {
-  children: React.ReactNode;
+interface Props {
+  children: ReactNode;
   handleDelete: () => void;
   id: string;
 }
 
 const rowRefs = new Map<string, Swipeable>();
 
-const SwipeableItem = ({ children, handleDelete, id }: IProps) => {
+const SwipeableItem = ({ children, handleDelete, id }: Props) => {
   return (
     <GestureHandlerRootView>
       <Swipeable

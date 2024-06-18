@@ -1,5 +1,5 @@
-import useGetCurrentUser from "@/api/auth/useGetCurrentUser";
-import useSignIn from "@/api/auth/useSignIn";
+import getCurrentUser from "@/api/auth/getCurrentUser";
+import signIn from "@/api/auth/signIn";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignInData } from "@/interfaces/ISignInData";
 import { Link, router } from "expo-router";
@@ -26,14 +26,15 @@ const SignInForm = () => {
     setIsSubmitting(true);
 
     try {
-      await useSignIn(form.email, form.password);
-      const result = await useGetCurrentUser();
+      await signIn(form.email, form.password);
+      const result = await getCurrentUser();
 
       setUser(result);
       setIsLogged(true);
 
       router.replace("/home");
     } catch (error) {
+      console.log(error);
       Alert.alert("Error", "Something went wrong.");
     } finally {
       setIsSubmitting(false);

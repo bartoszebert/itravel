@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Keyboard, Modal, Pressable, Text, View } from "react-native";
 import CustomButton from "./CustomButton";
 
-interface IProps {
+interface Props {
   date: Date;
   setDate: (date: Date | undefined) => void;
 }
 
-const CustomDatePicker = ({ date, setDate }: IProps) => {
+const CustomDatePicker = ({ date, setDate }: Props) => {
   const [show, setShow] = useState<boolean>(false);
 
   return (

@@ -7,11 +7,11 @@ import { renderDaysUntilStart } from "@/utils/renderDaysUntilStart";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
-interface IProps {
+interface Props {
   item: ITravelItem;
 }
 
-const TravelListItem = ({ item }: IProps) => {
+const TravelListItem = ({ item }: Props) => {
   const { name, photo, startDate, endDate, $id } = item;
   const { deleteItem } = useTripListItem(item);
 

@@ -6,7 +6,7 @@ const useTripList = () => {
 
   useEffect(() => {
     getTravels();
-  }, []);
+  }, [getTravels]);
 
   return { travelList, isLoading, getTravels };
 };

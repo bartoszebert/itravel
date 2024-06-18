@@ -1,10 +1,10 @@
 import { IUser } from "@/interfaces/IUser";
 import { Query } from "react-native-appwrite";
-import useAppwrite from "../useAppwrite";
+import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
 
-const useGetCurrentUser = async (): Promise<IUser | null> => {
-  const { account, databases } = useAppwrite();
+const getCurrentUser = async (): Promise<IUser | null> => {
+  const { account, databases } = initializeAppwrite();
   const { databaseId, userCollectionId } = appwriteConfig;
 
   try {
@@ -22,8 +22,9 @@ const useGetCurrentUser = async (): Promise<IUser | null> => {
 
     return currentUser.documents[0];
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to get user");
   }
 };
 
-export default useGetCurrentUser;
+export default getCurrentUser;

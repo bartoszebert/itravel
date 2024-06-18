@@ -1,10 +1,10 @@
 import { Text, TouchableOpacity, View } from "react-native";
 
-interface IProps {
+interface Props {
   handleDelete: () => void;
 }
 
-const SwipeableDeleteButton = ({ handleDelete }: IProps) => (
+const SwipeableDeleteButton = ({ handleDelete }: Props) => (
   <TouchableOpacity
     activeOpacity={0.7}
     onPress={handleDelete}

@@ -1,4 +1,4 @@
-import useGetTravelList from "@/api/travelList/useGetTravelList";
+import getTravelList from "@/api/travelList/getTravelList";
 import { ITravelItem } from "@/interfaces/ITravelItem";
 import { useCallback, useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ const useTravelData = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await useGetTravelList();
+      const res = await getTravelList();
       setTravelList(res);
     } catch (err) {
       setError(err as Error);
@@ -22,7 +22,7 @@ const useTravelData = () => {
 
   useEffect(() => {
     getTravels();
-  }, []);
+  }, [getTravels]);
 
   return { travelList, isLoading, error, getTravels, setTravelList };
 };

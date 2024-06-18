@@ -1,7 +1,7 @@
 import { Account, Avatars, Client, Databases } from "react-native-appwrite";
 import { appwriteConfig } from "./utils/appwriteConfig";
 
-const useAppwrite = () => {
+const initializeAppwrite = () => {
   const { endpoint, platform, projectId } = appwriteConfig;
 
   const client = new Client();
@@ -14,4 +14,4 @@ const useAppwrite = () => {
   return { account, avatars, databases };
 };
 
-export default useAppwrite;
+export default initializeAppwrite;

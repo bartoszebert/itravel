@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { ILocation } from "@/interfaces/ILocation";
+import { useCallback, useEffect, useState } from "react";
 
 const API_KEY = String(process.env.EXPO_PUBLIC_GEOAPIFY_API_KEY);
 
 const useGetLocations = (search: string) => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<ILocation[]>([]);
 
-  const getLocations = async (search: string) => {
+  const getLocations = useCallback(async (search: string) => {
     if (!search) return;
     try {
       const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&format=json&apiKey=${API_KEY}`;
@@ -15,11 +16,11 @@ const useGetLocations = (search: string) => {
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getLocations(search);
-  }, []);
+  }, [search, getLocations]);
 
   return { refetch: getLocations, data };
 };

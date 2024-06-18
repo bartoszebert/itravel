@@ -1,4 +1,4 @@
-import useDeleteTravel from "@/api/travelList/useDeleteTravel";
+import deleteTravel from "@/api/travelList/deleteTravel";
 import { useTravelContext } from "@/context/TravelProvider";
 import { ITravelItem } from "@/interfaces/ITravelItem";
 
@@ -7,7 +7,7 @@ const useTripListItem = (item: ITravelItem) => {
   const { $id } = item;
 
   const deleteItem = async () => {
-    await useDeleteTravel($id);
+    await deleteTravel($id);
     getTravels();
   };
 

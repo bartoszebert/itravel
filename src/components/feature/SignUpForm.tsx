@@ -1,4 +1,4 @@
-import useCreateUser from "@/api/auth/useCreateUser";
+import createUser from "@/api/auth/createUser";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { ISignUpData } from "@/interfaces/ISignUpData";
 import { Link, router } from "expo-router";
@@ -30,16 +30,13 @@ const SignUpForm = () => {
 
     setIsSubmitting(true);
     try {
-      const result = await useCreateUser(
-        form.email,
-        form.password,
-        form.username
-      );
+      const result = await createUser(form.email, form.password, form.username);
       setUser(result);
       setIsLogged(true);
 
       router.replace("/home");
     } catch (error) {
+      console.log(error);
       Alert.alert("Error", "Something went wrong.");
     } finally {
       setIsSubmitting(false);

@@ -1,12 +1,12 @@
 import useShowLoadedPhoto from "@/hooks/itravel/useShowLoadedPhoto";
 import { ActivityIndicator, Image, Text, View } from "react-native";
 
-interface IProps {
+interface Props {
   trigger: string;
   onPhotoFetched: (photoUrl: string) => void;
 }
 
-const ShowLoadedPhoto = ({ trigger, onPhotoFetched }: IProps) => {
+const ShowLoadedPhoto = ({ trigger, onPhotoFetched }: Props) => {
   const { photoUrl, isLoading, error } = useShowLoadedPhoto(
     trigger,
     onPhotoFetched

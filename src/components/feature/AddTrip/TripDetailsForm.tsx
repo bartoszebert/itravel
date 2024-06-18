@@ -3,7 +3,7 @@ import FormField from "@/components/ui/FormField";
 import { IAddTripForm } from "@/interfaces/IAddTripForm";
 import { Dispatch, SetStateAction } from "react";
 
-interface IProps {
+interface Props {
   form: IAddTripForm;
   setForm: Dispatch<SetStateAction<IAddTripForm>>;
   handleSetStartDate: (date: Date | undefined) => void;
@@ -15,7 +15,7 @@ const TripDetailsForm = ({
   setForm,
   handleSetStartDate,
   handleSetEndDate,
-}: IProps) => {
+}: Props) => {
   return (
     <>
       <FormField

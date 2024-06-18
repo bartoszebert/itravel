@@ -1,8 +1,8 @@
-import useAppwrite from "../useAppwrite";
+import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
 
-const useDeleteTravel = async (travelId: string) => {
-  const { databases } = useAppwrite();
+const deleteTravel = async (travelId: string) => {
+  const { databases } = initializeAppwrite();
   const { databaseId, travelCollectionId } = appwriteConfig;
 
   try {
@@ -18,4 +18,4 @@ const useDeleteTravel = async (travelId: string) => {
   }
 };
 
-export default useDeleteTravel;
+export default deleteTravel;

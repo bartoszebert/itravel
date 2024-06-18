@@ -1,19 +1,11 @@
+import { ILocation } from "@/interfaces/ILocation";
 import { Pressable, Text, View } from "react-native";
-
-interface ILocation {
-  place_id: string;
-  formatted: string;
-  country: string;
-  city: string;
-  address_line1: string;
-  address_line2: string;
-}
-interface IProps {
+interface Props {
   item: ILocation;
   onSelect: () => void;
 }
 
-const LocationListItem = ({ item, onSelect }: IProps) => (
+const LocationListItem = ({ item, onSelect }: Props) => (
   <Pressable
     onPress={onSelect}
     className="rounded-xl w-full bg-primary-800 mt-1 z-50"

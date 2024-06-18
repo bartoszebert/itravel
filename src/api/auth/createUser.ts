@@ -1,15 +1,15 @@
 import { IUser } from "@/interfaces/IUser";
 import { ID } from "react-native-appwrite";
-import useAppwrite from "../useAppwrite";
+import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
-import signIn from "./useSignIn";
+import signIn from "./signIn";
 
-const useCreateUser = async (
+const createUser = async (
   email: string,
   password: string,
   username: string
 ): Promise<IUser | null> => {
-  const { account, avatars, databases } = useAppwrite();
+  const { account, avatars, databases } = initializeAppwrite();
   const { databaseId, userCollectionId } = appwriteConfig;
 
   try {
@@ -38,9 +38,9 @@ const useCreateUser = async (
     await signIn(email, password);
 
     return newUser;
-  } catch (error) {
-    throw new Error("Failed to create user");
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
-export default useCreateUser;
+export default createUser;

@@ -1,5 +1,10 @@
 export interface ITravelItem {
   $id: string;
+  $collectionId: string;
+  $databaseId: string;
+  $createdAt: string;
+  $updatedAt: string;
+  $permissions: string[];
   travelId: string;
   name: string;
   startDate: string;

@@ -15,7 +15,7 @@ const TripItemDetails = () => {
   useEffect(() => {
     const currentTravel = travelList.find((travel) => travel.$id === id);
     setTravelData(currentTravel);
-  }, []);
+  }, [id, travelList]);
 
   if (!travelData) return null;
 

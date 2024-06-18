@@ -1,5 +1,5 @@
 import { IUser } from "@/interfaces/IUser";
-import useAppwrite from "../useAppwrite";
+import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
 
 interface IUpdateUserProps {
@@ -15,7 +15,7 @@ const updateUser = async ({
   firstname,
   lastname,
 }: IUpdateUserProps): Promise<IUser | null> => {
-  const { databases } = useAppwrite();
+  const { databases } = initializeAppwrite();
   const { databaseId, userCollectionId } = appwriteConfig;
 
   try {
@@ -31,6 +31,7 @@ const updateUser = async ({
 
     return updatedUser;
   } catch (error) {
+    console.log(error);
     throw new Error("error");
   }
 };

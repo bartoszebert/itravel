@@ -1,7 +1,7 @@
-import { Image, Text, View } from "react-native";
+import { Image, ImageSourcePropType, Text, View } from "react-native";
 
 interface Props {
-  icon: any;
+  icon: ImageSourcePropType;
   color: string;
   name: string;
 }

@@ -1,4 +1,4 @@
-import useSignOut from "@/api/auth/useSignOut";
+import signOut from "@/api/auth/signOut";
 import CustomButton from "@/components/ui/CustomButton";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { router } from "expo-router";
@@ -10,7 +10,7 @@ const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
 
   const logout = async () => {
-    await useSignOut();
+    await signOut();
     setUser(null);
     setIsLogged(false);
 

@@ -1,4 +1,4 @@
-import useGetCurrentUser from "@/api/auth/useGetCurrentUser";
+import getCurrentUser from "@/api/auth/getCurrentUser";
 import { IUser } from "@/interfaces/IUser";
 import { useCallback, useEffect, useState } from "react";
 
@@ -10,7 +10,7 @@ const useGlobalState = () => {
   const updateUserStatus = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await useGetCurrentUser();
+      const res = await getCurrentUser();
       if (res) {
         setIsLogged(true);
         setUser(res);
