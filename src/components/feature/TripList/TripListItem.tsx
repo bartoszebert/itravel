@@ -1,45 +1,25 @@
 import useDeleteTravel from "@/api/travelList/useDeleteTravel";
 import SwipeableDeleteItem from "@/components/ui/SwipeableDeleteItem";
 import { useTravelContext } from "@/context/TravelProvider";
-import { daysBetweenDates } from "@/utils/daysBetweenDates";
-import { daysUntilDate } from "@/utils/daysUntilDate";
+import { ITravelItem } from "@/interfaces/ITravelItem";
 import { parseDate } from "@/utils/parseDate";
+import { renderDaysCount } from "@/utils/renderDaysCount";
+import { renderDaysUntilStart } from "@/utils/renderDaysUntilStart";
 import { router } from "expo-router";
 import React from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-interface ITravelListItem {
-  item: {
-    $id: string;
-    travelId: string;
-    name: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    destination: string;
-    photo: string;
-    budget: number;
-    owner: string;
-  };
+interface IProps {
+  item: ITravelItem;
 }
 
 let rowRefs = new Map();
 
-const TravelListItem = ({ item }: ITravelListItem) => {
+const TravelListItem = ({ item }: IProps) => {
   const { name, photo, startDate, endDate, travelId, $id } = item;
   const { getTravels } = useTravelContext();
-
-  const renderDaysCount = () => {
-    const days = daysBetweenDates(startDate, endDate);
-    return days > 1 ? `${days} days` : `${days} day`;
-  };
-
-  const renderDaysUntilStart = () => {
-    const days = daysUntilDate(startDate);
-    return days > 1 ? `${days} days` : `${days} day`;
-  };
 
   const deleteItem = async () => {
     useDeleteTravel($id);
@@ -76,11 +56,13 @@ const TravelListItem = ({ item }: ITravelListItem) => {
                 <Text className="text-white text-xs">
                   {parseDate(startDate)} - {parseDate(endDate)}
                 </Text>
-                <Text className="text-white text-xs">{renderDaysCount()}</Text>
+                <Text className="text-white text-xs">
+                  {renderDaysCount(startDate, endDate)}
+                </Text>
               </View>
               <Text className="text-white text-xs">
                 <Text className="font-psemibold">Starts in </Text>
-                {renderDaysUntilStart()}
+                {renderDaysUntilStart(startDate)}
               </Text>
             </View>
           </View>

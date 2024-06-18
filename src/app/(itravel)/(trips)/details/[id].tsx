@@ -1,28 +1,7 @@
-import { useTravelContext } from "@/context/TravelProvider";
-import { useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import TripItemDetails from "@/components/screen/itravel/trips/TripItemDetails";
 
 const TripItemPage = () => {
-  const { id } = useLocalSearchParams();
-  const { travelList } = useTravelContext();
-  const [travelData, setTravelData] = useState(null);
-
-  useEffect(() => {
-    console.log(travelList);
-    const currentTravel = travelList.find((travel) => travel.$id === id);
-    setTravelData(currentTravel);
-  }, []);
-
-  useEffect(() => {
-    console.log(travelData);
-  }, [travelData]);
-
-  return (
-    <View className="bg-primary flex-1 justify-center items-center">
-      <Text className="text-white">{id}</Text>
-    </View>
-  );
+  return <TripItemDetails />;
 };
 
 export default TripItemPage;
