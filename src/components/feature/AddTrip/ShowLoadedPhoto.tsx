@@ -20,13 +20,10 @@ const ShowLoadedPhoto = ({ trigger, onPhotoFetched }: IProps) => {
     onPhotoFetched(photoUrl);
   }, [photoUrl]);
 
-  if (isLoading) {
+  if (isLoading)
     return <ActivityIndicator className="p-10" size="large" color="#fff" />;
-  }
 
-  if (error) {
-    return <Text>Error loading photo</Text>;
-  }
+  if (error) return <Text>Error loading photo</Text>;
 
   if (!photoUrl) return null;
 
