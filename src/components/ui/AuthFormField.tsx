@@ -35,6 +35,7 @@ const AuthFormField = ({
           source={title === "Password" ? icons.password : icons.profile}
           className="w-4 h-4 mr-3"
           resizeMode="contain"
+          testID="password-icon"
         />
         <TextInput
           className="flex-1 text-primary font-pregular text-base"
@@ -54,6 +55,7 @@ const AuthFormField = ({
               source={!showPassword ? icons.eye : icons.eyeHide}
               className="w-6 h-6"
               resizeMode="contain"
+              testID="eye-icon"
             />
           </TouchableOpacity>
         )}
