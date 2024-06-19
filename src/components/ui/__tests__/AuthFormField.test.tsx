@@ -69,14 +69,11 @@ describe("AuthFormField", () => {
     const textInput = getByPlaceholderText(placeholder);
     const eyeIcon = getByTestId("eye-icon");
 
-    // Initial state: password is hidden
     expect(textInput.props.secureTextEntry).toBe(true);
 
-    // Press eye icon to show password
     fireEvent.press(eyeIcon);
     expect(textInput.props.secureTextEntry).toBe(false);
 
-    // Press eye icon again to hide password
     fireEvent.press(eyeIcon);
     expect(textInput.props.secureTextEntry).toBe(true);
   });
