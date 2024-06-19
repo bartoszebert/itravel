@@ -1,12 +1,4 @@
-import { icons } from "@/constants";
-import { useState } from "react";
-import {
-  Image,
-  KeyboardType,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { KeyboardType, TextInput, View } from "react-native";
 
 interface Props {
   title: string;
@@ -27,8 +19,6 @@ const FormField = ({
   keyboardType,
   disabled,
 }: Props) => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-
   return (
     <View className={`${otherStyles}`}>
       <View
@@ -43,21 +33,8 @@ const FormField = ({
           keyboardType={keyboardType}
           value={value}
           onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
           editable={!disabled}
         />
-        {title === "Password" && value && (
-          <TouchableOpacity
-            className="py-10"
-            onPress={() => setShowPassword(!showPassword)}
-          >
-            <Image
-              source={!showPassword ? icons.eye : icons.eyeHide}
-              className="w-6 h-6"
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        )}
       </View>
     </View>
   );
