@@ -9,8 +9,6 @@ interface Props {
   id: string;
 }
 
-const rowRefs = new Map<string, Swipeable>();
-
 const SwipeableItem = ({ children, handleDelete, id }: Props) => {
   return (
     <GestureHandlerRootView>
@@ -18,16 +16,7 @@ const SwipeableItem = ({ children, handleDelete, id }: Props) => {
         renderRightActions={() => (
           <SwipeableDeleteButton handleDelete={handleDelete} />
         )}
-        ref={(ref) => {
-          if (ref && !rowRefs.get(id)) {
-            rowRefs.set(id, ref);
-          }
-        }}
-        onSwipeableWillOpen={() => {
-          [...rowRefs.entries()].forEach(([key, ref]) => {
-            if (key !== id && ref) ref.close();
-          });
-        }}
+        testID="swipeable-item"
       >
         {children}
       </Swipeable>
