@@ -23,6 +23,7 @@ const CustomButton = ({
         isLoading ? "opacity-50" : ""
       }`}
       disabled={isLoading}
+      testID="custom-button"
     >
       <Text
         className={`text-secondary-800 font-psemibold text-lg ${textStyles}`}
