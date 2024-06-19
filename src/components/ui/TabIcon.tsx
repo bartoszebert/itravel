@@ -14,6 +14,7 @@ const TabIcon = ({ icon, color, name }: Props) => {
         resizeMode="contain"
         tintColor={color}
         className="w-6 h-6"
+        testID="tab-icon-image"
       />
       <Text className={"text-xs font-pregular"} style={{ color: color }}>
         {name}
