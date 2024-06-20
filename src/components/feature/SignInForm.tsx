@@ -45,15 +45,13 @@ const SignInForm = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Text className="text-2xl text-primary-100 text-semibold mt-10 font-psemibold">
-        Log in:
-      </Text>
+      <Text className="text-2xl text-white mt-10 font-psemibold">Log in:</Text>
       <AuthFormField
         title="Email"
         placeholder="Email"
         value={form.email}
         handleChangeText={(e: string) => setForm({ ...form, email: e })}
-        otherStyles="mt-3"
+        otherStyles="mt-7"
         keyboardType="email-address"
       />
       <AuthFormField

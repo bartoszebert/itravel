@@ -47,9 +47,7 @@ const SignUpForm = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Text className="text-2xl text-primary-100 text-semibold mt-10 font-psemibold">
-        Sign up:
-      </Text>
+      <Text className="text-2xl text-white mt-10 font-psemibold">Sign up:</Text>
       <AuthFormField
         title="Username"
         placeholder="Username"
