@@ -1,4 +1,4 @@
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { ID } from "react-native-appwrite";
 import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
@@ -12,12 +12,12 @@ interface Props {
   endDate: Date;
 }
 
-const addTravel = async (data: Props): Promise<ITravelItem | null> => {
+const addTravel = async (data: Props): Promise<ITripItem | null> => {
   const { databases } = initializeAppwrite();
   const { databaseId, travelCollectionId } = appwriteConfig;
 
   try {
-    const newTravel = await databases.createDocument<ITravelItem>(
+    const newTravel = await databases.createDocument<ITripItem>(
       databaseId,
       travelCollectionId,
       ID.unique(),

@@ -1,16 +1,16 @@
-import TravelProvider from "@/context/TravelProvider";
+import TripProvider from "@/context/TripProvider";
 import { Stack } from "expo-router";
 
 const ProfileLayout = () => {
   return (
-    <TravelProvider>
+    <TripProvider>
       <Stack>
         <Stack.Screen name="trips" options={{ headerShown: false }} />
         <Stack.Screen name="addTrip" options={{ headerShown: false }} />
         <Stack.Screen name="editTrip" options={{ headerShown: false }} />
         <Stack.Screen name="details/[id]" options={{ headerShown: false }} />
       </Stack>
-    </TravelProvider>
+    </TripProvider>
   );
 };
 

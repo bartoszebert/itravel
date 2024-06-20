@@ -1,9 +1,9 @@
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { Query } from "react-native-appwrite";
 import initializeAppwrite from "../initializeAppwrite";
 import { appwriteConfig } from "../utils/appwriteConfig";
 
-const getTravelList = async (): Promise<ITravelItem[]> => {
+const getTravelList = async (): Promise<ITripItem[]> => {
   const { account, databases } = initializeAppwrite();
   const { databaseId, travelCollectionId } = appwriteConfig;
 
@@ -12,7 +12,7 @@ const getTravelList = async (): Promise<ITravelItem[]> => {
 
     if (!currentAccount) throw new Error();
 
-    const travelList = await databases.listDocuments<ITravelItem>(
+    const travelList = await databases.listDocuments<ITripItem>(
       databaseId,
       travelCollectionId,
       [Query.equal("owner", currentAccount.$id), Query.orderAsc("startDate")]

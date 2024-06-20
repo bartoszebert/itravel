@@ -1,11 +1,11 @@
 import deleteTravel from "@/api/travelList/deleteTravel";
-import { useTravelContext } from "@/context/TravelProvider";
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { useTripContext } from "@/context/TripProvider";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
 
-const useTripListItem = (item: ITravelItem) => {
-  const { getTravels } = useTravelContext();
+const useTripListItem = (item: ITripItem) => {
+  const { getTravels } = useTripContext();
   const { $id, startDate, endDate } = item;
 
   const startDateFormatted = parseDate(startDate);

@@ -1,4 +1,4 @@
-export interface ITravelItem {
+export interface ITripItem {
   $id: string;
   $collectionId: string;
   $databaseId: string;

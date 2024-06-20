@@ -1,9 +1,9 @@
 import getTravelList from "@/api/travelList/getTravelList";
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { useCallback, useEffect, useState } from "react";
 
-const useTravelData = () => {
-  const [travelList, setTravelList] = useState<ITravelItem[]>([]);
+const useTripData = () => {
+  const [travelList, setTravelList] = useState<ITripItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -26,4 +26,4 @@ const useTravelData = () => {
 
   return { travelList, isLoading, error, getTravels, setTravelList };
 };
-export default useTravelData;
+export default useTripData;

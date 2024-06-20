@@ -1,8 +1,8 @@
-import { useTravelContext } from "@/context/TravelProvider";
+import { useTripContext } from "@/context/TripProvider";
 import { useEffect } from "react";
 
 const useTripList = () => {
-  const { travelList, getTravels, isLoading } = useTravelContext();
+  const { travelList, getTravels, isLoading } = useTripContext();
 
   useEffect(() => {
     getTravels();

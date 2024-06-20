@@ -1,6 +1,6 @@
 import TripStart from "@/components/ui/TripStart";
-import { useTravelContext } from "@/context/TravelProvider";
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { useTripContext } from "@/context/TripProvider";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
 import { useLocalSearchParams } from "expo-router";
@@ -9,8 +9,8 @@ import { Image, ScrollView, Text, View } from "react-native";
 
 const TripItemDetails = () => {
   const { id } = useLocalSearchParams();
-  const { travelList } = useTravelContext();
-  const [travelData, setTravelData] = useState<ITravelItem | undefined>();
+  const { travelList } = useTripContext();
+  const [travelData, setTravelData] = useState<ITripItem | undefined>();
 
   useEffect(() => {
     const currentTravel = travelList.find((travel) => travel.$id === id);

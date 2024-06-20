@@ -1,12 +1,12 @@
 import SwipeableItem from "@/components/ui/SwipeableItem";
 import TripStart from "@/components/ui/TripStart";
 import useTripListItem from "@/hooks/itravel/useTripListItem";
-import { ITravelItem } from "@/interfaces/ITravelItem";
+import { ITripItem } from "@/interfaces/ITripItem";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
 interface Props {
-  item: ITravelItem;
+  item: ITripItem;
 }
 
 const TravelListItem = ({ item }: Props) => {
