@@ -2,8 +2,6 @@ import SwipeableItem from "@/components/ui/SwipeableItem";
 import TripStart from "@/components/ui/TripStart";
 import useTripListItem from "@/hooks/itravel/useTripListItem";
 import { ITravelItem } from "@/interfaces/ITravelItem";
-import { parseDate } from "@/utils/parseDate";
-import { renderDaysCount } from "@/utils/renderDaysCount";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
@@ -12,8 +10,8 @@ interface Props {
 }
 
 const TravelListItem = ({ item }: Props) => {
-  const { name, photo, startDate, endDate, $id } = item;
-  const { deleteItem } = useTripListItem(item);
+  const { name, photo, startDate, $id } = item;
+  const { deleteItem, dateRange, daysCount } = useTripListItem(item);
 
   return (
     <SwipeableItem handleDelete={deleteItem} id={$id}>
@@ -32,12 +30,8 @@ const TravelListItem = ({ item }: Props) => {
               {name}
             </Text>
             <View>
-              <Text className="text-primary-100 text-sm">
-                {parseDate(startDate)} - {parseDate(endDate)}
-              </Text>
-              <Text className="text-primary-100 text-sm">
-                {renderDaysCount(startDate, endDate)}
-              </Text>
+              <Text className="text-primary-100 text-sm">{dateRange}</Text>
+              <Text className="text-primary-100 text-sm">{daysCount}</Text>
             </View>
             <TripStart startDate={startDate} />
           </View>
