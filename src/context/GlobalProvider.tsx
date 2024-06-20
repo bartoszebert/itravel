@@ -34,7 +34,7 @@ const GlobalProvider = ({ children }: Props) => {
         user,
         setUser,
         isLoading,
-        theme: colorScheme ? colorScheme : "dark",
+        theme: resolvedColorScheme,
       }}
     >
       <View style={themes[resolvedColorScheme]} className="flex-1">
