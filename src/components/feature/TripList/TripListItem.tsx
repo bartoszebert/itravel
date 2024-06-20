@@ -24,8 +24,11 @@ const TravelListItem = ({ item }: Props) => {
             className="w-[122px] h-[122px] rounded-lg"
             resizeMode="cover"
           />
-          <View className="px-4 gap-1">
-            <Text className="text-primary-100 text-lg font-psemibold">
+          <View className="px-4 gap-1 flex-1">
+            <Text
+              className="text-primary-100 text-lg font-psemibold"
+              numberOfLines={2}
+            >
               {name}
             </Text>
             <View>
