@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import "react-native-url-polyfill/auto";
+import "../assets/global.css";
 
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({

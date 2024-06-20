@@ -18,16 +18,15 @@ describe("TabIcon", () => {
     const nameText = getByText(name);
 
     const flattenedTextStyles = StyleSheet.flatten(nameText.props.style);
-    const flattenedImageStyles = StyleSheet.flatten(iconImage.props.style);
 
     expect(iconImage.props.source).toEqual(1);
     expect(nameText.children[0]).toEqual(name);
 
     expect(flattenedTextStyles.color).toBe(color);
-    expect(flattenedTextStyles.fontSize).toBeTruthy();
-    expect(flattenedTextStyles.fontFamily).toBeTruthy();
+    expect(nameText.props.className).toContain("text-xs");
+    expect(nameText.props.className).toContain("font-pregular");
 
-    expect(flattenedImageStyles.width).toBeTruthy();
-    expect(flattenedImageStyles.height).toBeTruthy();
+    expect(iconImage.props.className).toContain("w-6");
+    expect(iconImage.props.className).toContain("h-6");
   });
 });

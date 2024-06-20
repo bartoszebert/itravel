@@ -1,6 +1,5 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
-import { StyleSheet } from "react-native";
 import CustomButton from "../CustomButton";
 
 describe("CustomButton", () => {
@@ -20,8 +19,8 @@ describe("CustomButton", () => {
     expect(buttonText.props.children).toBe(title);
   });
 
-  it("renders the button with custom container and text styles", () => {
-    const { getByText, getByTestId } = render(
+  it("renders the button with custom text styles", () => {
+    const { getByText } = render(
       <CustomButton
         title={title}
         handlePress={handlePress}
@@ -31,26 +30,17 @@ describe("CustomButton", () => {
     );
 
     const buttonText = getByText(title);
-    const button = getByTestId("custom-button");
 
-    if (!button) throw new Error("Button not found");
-
-    const flattenedContainerStyles = StyleSheet.flatten(button.props.style);
-    const flattenedTextStyles = StyleSheet.flatten(buttonText.props.style);
-
-    expect(flattenedContainerStyles.backgroundColor).toBeTruthy();
-    expect(flattenedTextStyles.color).toBe("#fff");
+    expect(buttonText.props.className).toContain(textStyles);
   });
 
-  it("disables the button and reduces opacity when isLoading is true", () => {
+  it("disables the button when isLoading is true", () => {
     const { getByTestId } = render(
       <CustomButton title={title} handlePress={handlePress} isLoading={true} />
     );
 
     const button = getByTestId("custom-button");
-    const flattenedButtonStyles = StyleSheet.flatten(button.props.style);
 
-    expect(flattenedButtonStyles.opacity).toBe(0.5);
     expect(button.props.accessibilityState.disabled).toBe(true);
   });
 
