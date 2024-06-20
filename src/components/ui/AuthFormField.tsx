@@ -38,13 +38,14 @@ const AuthFormField = ({
           testID="password-icon"
         />
         <TextInput
-          className="flex-1 text-primary font-pregular text-base"
+          className="flex-1 text-black-100 font-pregular text-base"
           placeholder={placeholder}
           placeholderTextColor="#292929"
           keyboardType={keyboardType}
           value={value}
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
+          autoCapitalize="none"
         />
         {title === "Password" && value && (
           <TouchableOpacity
