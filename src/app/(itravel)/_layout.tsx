@@ -1,21 +1,16 @@
+import useScreenOptions from "@/hooks/useScreenOptions";
 import getTabScreenOptions from "@/utils/getTabScreenOptions";
 import { Tabs } from "expo-router";
 import { icons } from "../../constants";
 
 const TabsLayout = () => {
+  const { screenOptions } = useScreenOptions();
+
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "#8982e4",
-        tabBarInactiveTintColor: "#cdcde0",
-        tabBarStyle: {
-          backgroundColor: "#161622",
-          borderTopWidth: 1,
-          borderTopColor: "#232533",
-          height: 84,
-          paddingTop: 12,
-        },
+        ...screenOptions,
       }}
     >
       <Tabs.Screen
