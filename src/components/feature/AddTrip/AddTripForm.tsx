@@ -36,6 +36,7 @@ const AddTripForm = () => {
         placeholder="Search destination"
         value={destination}
         handleChangeText={(e: string) => setDestination(e)}
+        disabled={false}
       />
 
       {destination && (

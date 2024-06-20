@@ -25,7 +25,7 @@ const FormField = ({
         }`}
       >
         <TextInput
-          className="flex-1 text-primary-100 font-pregular text-base opacity-50 focus:opacity-100"
+          className="flex-1 text-black font-pregular text-base opacity-50 focus:opacity-100"
           placeholder={placeholder}
           placeholderTextColor="#292929"
           keyboardType={keyboardType}
