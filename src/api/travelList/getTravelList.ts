@@ -15,7 +15,7 @@ const getTravelList = async (): Promise<ITravelItem[]> => {
     const travelList = await databases.listDocuments<ITravelItem>(
       databaseId,
       travelCollectionId,
-      [Query.equal("owner", currentAccount.$id)]
+      [Query.equal("owner", currentAccount.$id), Query.orderAsc("startDate")]
     );
 
     return travelList.documents;
