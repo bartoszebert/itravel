@@ -1,8 +1,12 @@
 import useGlobalState from "@/hooks/useGlobalState";
 import { IGlobalState } from "@/interfaces/IGlobalInterface";
+import { themes } from "@/utils/colorTheme";
+import { useColorScheme } from "nativewind";
 import { ReactNode, createContext, useContext } from "react";
+import { View } from "react-native";
 
 const defaultGlobalState: IGlobalState = {
+  theme: "light",
   isLogged: false,
   user: null,
   isLoading: true,
@@ -19,11 +23,23 @@ interface Props {
 
 const GlobalProvider = ({ children }: Props) => {
   const { isLogged, setIsLogged, user, setUser, isLoading } = useGlobalState();
+  const { colorScheme } = useColorScheme();
+  const resolvedColorScheme = colorScheme || "dark";
+
   return (
     <GlobalContext.Provider
-      value={{ isLogged, setIsLogged, user, setUser, isLoading }}
+      value={{
+        isLogged,
+        setIsLogged,
+        user,
+        setUser,
+        isLoading,
+        theme: colorScheme ? colorScheme : "dark",
+      }}
     >
-      {children}
+      <View style={themes[resolvedColorScheme]} className="flex-1">
+        {children}
+      </View>
     </GlobalContext.Provider>
   );
 };
