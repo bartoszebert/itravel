@@ -1,9 +1,9 @@
 import SwipeableItem from "@/components/ui/SwipeableItem";
+import TripStart from "@/components/ui/TripStart";
 import useTripListItem from "@/hooks/itravel/useTripListItem";
 import { ITravelItem } from "@/interfaces/ITravelItem";
 import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
-import { renderDaysUntilStart } from "@/utils/renderDaysUntilStart";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
@@ -39,10 +39,7 @@ const TravelListItem = ({ item }: Props) => {
                 {renderDaysCount(startDate, endDate)}
               </Text>
             </View>
-            <Text className="text-primary-100 text-sm">
-              <Text className="font-psemibold">Starts in </Text>
-              {renderDaysUntilStart(startDate)}
-            </Text>
+            <TripStart startDate={startDate} />
           </View>
         </View>
       </Pressable>

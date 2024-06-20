@@ -1,8 +1,8 @@
+import TripStart from "@/components/ui/TripStart";
 import { useTravelContext } from "@/context/TravelProvider";
 import { ITravelItem } from "@/interfaces/ITravelItem";
 import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
-import { renderDaysUntilStart } from "@/utils/renderDaysUntilStart";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
@@ -46,9 +46,7 @@ const TripItemDetails = () => {
           <Text className="text-primary-100">
             ({renderDaysCount(travelData.startDate, travelData.endDate)})
           </Text>
-          <Text className="text-primary-100 mt-4">
-            Starts in {renderDaysUntilStart(travelData.startDate)}
-          </Text>
+          <TripStart startDate={travelData.startDate} />
         </View>
       </View>
     </ScrollView>
