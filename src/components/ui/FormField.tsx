@@ -1,7 +1,6 @@
 import { KeyboardType, TextInput, View } from "react-native";
 
 interface Props {
-  title: string;
   value: string;
   placeholder?: string;
   handleChangeText: (text: string) => void;
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const FormField = ({
-  title,
   value,
   placeholder,
   handleChangeText,

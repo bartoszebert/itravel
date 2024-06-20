@@ -44,7 +44,6 @@ const EditProfileForm = () => {
       {editProfileFormFields.map(({ title, placeholder, isDisabled }) => (
         <FormField
           key={title}
-          title={title}
           placeholder={placeholder}
           value={form[title]}
           handleChangeText={(e) =>

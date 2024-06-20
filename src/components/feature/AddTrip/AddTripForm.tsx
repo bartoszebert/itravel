@@ -33,7 +33,6 @@ const AddTripForm = () => {
       />
 
       <FormField
-        title="destination"
         placeholder="Search destination"
         value={destination}
         handleChangeText={(e: string) => setDestination(e)}

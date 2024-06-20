@@ -11,7 +11,6 @@ jest.mock("@/constants", () => ({
 }));
 
 describe("FormField", () => {
-  const title = "Name";
   const value = "name";
   const placeholder = "Enter your name";
   const handleChangeText = jest.fn();
@@ -21,7 +20,6 @@ describe("FormField", () => {
   it("renders correctly with the given props", () => {
     const { getByPlaceholderText } = render(
       <FormField
-        title={title}
         value={value}
         placeholder={placeholder}
         handleChangeText={handleChangeText}
@@ -38,7 +36,6 @@ describe("FormField", () => {
   it("calls handleChangeText when the text input changes", () => {
     const { getByPlaceholderText } = render(
       <FormField
-        title={title}
         value={value}
         placeholder={placeholder}
         handleChangeText={handleChangeText}
@@ -56,7 +53,6 @@ describe("FormField", () => {
   it("disables the input field when the disabled prop is true", () => {
     const { getByPlaceholderText } = render(
       <FormField
-        title={title}
         value={value}
         placeholder={placeholder}
         handleChangeText={handleChangeText}

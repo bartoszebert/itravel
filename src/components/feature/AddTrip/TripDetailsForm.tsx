@@ -19,7 +19,6 @@ const TripDetailsForm = ({
   return (
     <>
       <FormField
-        title="name"
         placeholder="Enter trip name"
         otherStyles="mt-2"
         value={form.name}
