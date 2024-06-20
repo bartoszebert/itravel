@@ -6,4 +6,5 @@ export const defaultTrip: IAddTripForm = {
   photo: "",
   startDate: new Date(),
   endDate: new Date(),
+  status: "upcoming",
 };

@@ -1,3 +1,5 @@
+import { TTripStatus } from "@/types/TTripStatus";
+
 export interface ITripItem {
   $id: string;
   $collectionId: string;
@@ -14,4 +16,5 @@ export interface ITripItem {
   photo: string;
   budget: number;
   owner: string;
+  status: TTripStatus;
 }

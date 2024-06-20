@@ -4,7 +4,7 @@ import { ITripItem } from "@/interfaces/ITripItem";
 import { parseDate } from "@/utils/parseDate";
 import { renderDaysCount } from "@/utils/renderDaysCount";
 
-const useTripListItem = (item: ITripItem) => {
+const useTripDetails = (item: ITripItem) => {
   const { getTravels } = useTripContext();
   const { $id, startDate, endDate } = item;
 
@@ -26,4 +26,4 @@ const useTripListItem = (item: ITripItem) => {
   return { deleteItem, dateRange, daysCount };
 };
 
-export default useTripListItem;
+export default useTripDetails;

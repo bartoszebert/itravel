@@ -1,6 +1,6 @@
 import SwipeableItem from "@/components/ui/SwipeableItem";
 import TripStart from "@/components/ui/TripStart";
-import useTripListItem from "@/hooks/itravel/useTripListItem";
+import useTripDetails from "@/hooks/itravel/useTripDetails";
 import { ITripItem } from "@/interfaces/ITripItem";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
@@ -11,7 +11,7 @@ interface Props {
 
 const TravelListItem = ({ item }: Props) => {
   const { name, photo, startDate, $id } = item;
-  const { deleteItem, dateRange, daysCount } = useTripListItem(item);
+  const { deleteItem, dateRange, daysCount } = useTripDetails(item);
 
   return (
     <SwipeableItem handleDelete={deleteItem} id={$id}>
