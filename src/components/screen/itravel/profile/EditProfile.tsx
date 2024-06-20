@@ -25,8 +25,8 @@ const EditProfile = () => {
             <CustomButton
               title="Cancel"
               handlePress={() => router.back()}
-              containerStyles="mt-3 w-full bg-white"
-              textStyles="text-primary"
+              containerStyles="mt-3 w-full bg-primary-700"
+              textStyles="text-primary-100"
             />
           </View>
         </ScrollView>

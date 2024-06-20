@@ -45,7 +45,7 @@ const Index = () => {
               <CustomButton
                 title="Get Started"
                 handlePress={() => router.push("/sign-in")}
-                containerStyles="mt-8"
+                containerStyles="mt-8 bg-white"
               />
             </View>
           </View>

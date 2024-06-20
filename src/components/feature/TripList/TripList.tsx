@@ -23,7 +23,8 @@ const TripList = () => {
       <CustomButton
         title="Add new trip"
         handlePress={() => router.push("addTrip")}
-        containerStyles="mt-5"
+        containerStyles="mt-5 bg-secondary"
+        textStyles="text-white"
       />
     </View>
   );

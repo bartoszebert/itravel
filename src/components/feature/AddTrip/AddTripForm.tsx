@@ -58,12 +58,13 @@ const AddTripForm = () => {
         title="Add Trip"
         handlePress={submit}
         containerStyles="mt-5 bg-secondary mb-2"
-        textStyles="text-primary-100"
+        textStyles="text-white"
       />
       <CustomButton
         title="Cancel"
         handlePress={() => router.back()}
-        containerStyles="mb-5"
+        containerStyles="mb-5 bg-primary-700"
+        textStyles="text-primary-100"
       />
     </View>
   );

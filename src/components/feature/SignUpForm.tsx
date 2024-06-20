@@ -74,7 +74,7 @@ const SignUpForm = () => {
         title="Sign up"
         handlePress={submit}
         containerStyles="mt-5 bg-secondary"
-        textStyles="text-primary-100"
+        textStyles="text-white"
         isLoading={isSubmitting}
       />
       <View className="justify-center pt-5 flex-row gap-2">

@@ -58,7 +58,7 @@ const EditProfileForm = () => {
         title="Update"
         handlePress={submit}
         containerStyles="mt-5 w-full bg-secondary"
-        textStyles="text-primary-100"
+        textStyles="text-white"
       />
     </View>
   );

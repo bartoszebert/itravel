@@ -28,12 +28,14 @@ const Profile = () => {
             <CustomButton
               title="Edit Profile"
               handlePress={() => router.push("/editProfile")}
-              containerStyles="mt-5"
+              containerStyles="mt-5 bg-secondary"
+              textStyles="text-white"
             />
             <CustomButton
               title="Logout"
               handlePress={logout}
-              containerStyles="mt-5"
+              containerStyles="mt-5 bg-primary-700"
+              textStyles="text-primary-100"
             />
           </View>
         </View>
