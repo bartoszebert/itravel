@@ -22,7 +22,7 @@ const CustomDatePicker = ({ date, setDate }: Props) => {
         }}
         testID="custom-date-picker-pressable"
       >
-        <Text className="text-white text-lg ">
+        <Text className="text-primary-100 text-lg ">
           {parseDate(date.toString())}
         </Text>
       </Pressable>
@@ -47,7 +47,7 @@ const CustomDatePicker = ({ date, setDate }: Props) => {
               title="OK"
               handlePress={() => setShow(false)}
               containerStyles="bg-secondary"
-              textStyles="text-white"
+              textStyles="text-primary-100"
             />
           </View>
         </View>

@@ -12,7 +12,7 @@ const SwipeableDeleteButton = ({ handleDelete }: Props) => (
     testID="delete-button"
   >
     <View>
-      <Text className="text-white font-pmedium">Delete</Text>
+      <Text className="text-primary-100 font-pmedium">Delete</Text>
     </View>
   </TouchableOpacity>
 );

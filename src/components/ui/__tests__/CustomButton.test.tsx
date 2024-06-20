@@ -6,7 +6,7 @@ describe("CustomButton", () => {
   const title = "Click Me";
   const handlePress = jest.fn();
   const containerStyles = "bg-secondary";
-  const textStyles = "text-white";
+  const textStyles = "text-primary-100";
 
   it("renders the button with default props", () => {
     const { getByText } = render(

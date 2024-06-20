@@ -47,7 +47,7 @@ const SignUpForm = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
+      <Text className="text-2xl text-primary-100 text-semibold mt-10 font-psemibold">
         Sign up:
       </Text>
       <AuthFormField
@@ -76,7 +76,7 @@ const SignUpForm = () => {
         title="Sign up"
         handlePress={submit}
         containerStyles="mt-5 bg-secondary"
-        textStyles="text-white"
+        textStyles="text-primary-100"
         isLoading={isSubmitting}
       />
       <View className="justify-center pt-5 flex-row gap-2">

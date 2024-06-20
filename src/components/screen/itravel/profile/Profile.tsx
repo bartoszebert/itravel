@@ -20,7 +20,7 @@ const Profile = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="pt-20 px-10 justify-between min-h-[75vh]">
-          <Text className="text-2xl font-pbold text-white text-center">
+          <Text className="text-2xl font-pbold text-primary-100 text-center">
             Your profile
           </Text>
           <UserDetails user={user} />

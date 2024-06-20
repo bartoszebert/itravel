@@ -11,8 +11,10 @@ const LocationListItem = ({ item, onSelect }: Props) => (
     className="rounded-xl w-full bg-primary-800 mt-1 z-50"
   >
     <View className="items-start py-3 px-5">
-      <Text className="text-white font-psemibold">{item.address_line1}</Text>
-      <Text className="text-white">{item.address_line2}</Text>
+      <Text className="text-primary-100 font-psemibold">
+        {item.address_line1}
+      </Text>
+      <Text className="text-primary-100">{item.address_line2}</Text>
     </View>
   </Pressable>
 );

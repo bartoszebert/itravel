@@ -15,17 +15,17 @@ const UserDetails = ({ user }: Props) => {
         source={{ uri: user.avatar }}
         resizeMode="contain"
       />
-      <Text className="text-white">
+      <Text className="text-primary-100">
         Username: <Text className="font-psemibold">{user.username}</Text>
       </Text>
-      <Text className="text-white mt-2">
+      <Text className="text-primary-100 mt-2">
         Firstname:{" "}
         <Text className="font-psemibold">{user.firstname || "-"}</Text>
       </Text>
-      <Text className="text-white mt-2">
+      <Text className="text-primary-100 mt-2">
         Lastname: <Text className="font-psemibold">{user.lastname || "-"}</Text>
       </Text>
-      <Text className="text-white mt-2">
+      <Text className="text-primary-100 mt-2">
         Email: <Text className="font-psemibold">{user.email}</Text>
       </Text>
     </View>

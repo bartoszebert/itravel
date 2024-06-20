@@ -23,7 +23,7 @@ const AddTripForm = () => {
 
   return (
     <View className="pt-20 px-10 h-full justify-start">
-      <Text className="text-white text-2xl font-psemibold mb-5 text-center">
+      <Text className="text-primary-100 text-2xl font-psemibold mb-5 text-center">
         Add New Trip
       </Text>
 
@@ -59,7 +59,7 @@ const AddTripForm = () => {
         title="Add Trip"
         handlePress={submit}
         containerStyles="mt-5 bg-secondary mb-2"
-        textStyles="text-white"
+        textStyles="text-primary-100"
       />
       <CustomButton
         title="Cancel"

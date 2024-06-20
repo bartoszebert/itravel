@@ -5,7 +5,7 @@ const Trips = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <View className="pt-10 pb-[26vh] px-8">
-        <Text className="text-2xl font-pbold text-white">Travels</Text>
+        <Text className="text-2xl font-pbold text-primary-100">Travels</Text>
         <TripList />
       </View>
     </SafeAreaView>

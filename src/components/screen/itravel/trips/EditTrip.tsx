@@ -13,7 +13,7 @@ const EditTrip = () => {
     >
       <SafeAreaView className="bg-primary h-full">
         <View className="pt-20 px-10">
-          <Text className="text-white text-2xl font-psemibold mb-5 text-center">
+          <Text className="text-primary-100 text-2xl font-psemibold mb-5 text-center">
             Add New Trip
           </Text>
         </View>

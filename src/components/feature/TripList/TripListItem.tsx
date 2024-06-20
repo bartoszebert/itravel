@@ -25,16 +25,18 @@ const TravelListItem = ({ item }: Props) => {
             resizeMode="cover"
           />
           <View className="px-3 gap-1">
-            <Text className="text-white text-sm font-psemibold">{name}</Text>
+            <Text className="text-primary-100 text-sm font-psemibold">
+              {name}
+            </Text>
             <View>
-              <Text className="text-white text-xs">
+              <Text className="text-primary-100 text-xs">
                 {parseDate(startDate)} - {parseDate(endDate)}
               </Text>
-              <Text className="text-white text-xs">
+              <Text className="text-primary-100 text-xs">
                 {renderDaysCount(startDate, endDate)}
               </Text>
             </View>
-            <Text className="text-white text-xs">
+            <Text className="text-primary-100 text-xs">
               <Text className="font-psemibold">Starts in </Text>
               {renderDaysUntilStart(startDate)}
             </Text>

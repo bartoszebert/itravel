@@ -9,7 +9,10 @@ interface Props {
 
 const DatePickerField = ({ label, date, onSetDate }: Props) => (
   <View className="flex-row items-center justify-between mt-4">
-    <Text className="text-white font-psemibold" testID="date-picker-label">
+    <Text
+      className="text-primary-100 font-psemibold"
+      testID="date-picker-label"
+    >
       {label}
     </Text>
     <CustomDatePicker date={date} setDate={onSetDate} />

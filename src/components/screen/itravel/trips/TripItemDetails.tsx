@@ -30,21 +30,23 @@ const TripItemDetails = () => {
       </View>
 
       <View className="p-8">
-        <Text className="text-white text-2xl font-psemibold">
+        <Text className="text-primary-100 text-2xl font-psemibold">
           {travelData.name}
         </Text>
-        <Text className="text-white text-lg font-plight">
+        <Text className="text-primary-100 text-lg font-plight">
           {travelData.destination}
         </Text>
         <View className="mt-2">
-          <Text className="text-white font-psemibold my-2">Trip dates: </Text>
-          <Text className="text-white">
+          <Text className="text-primary-100 font-psemibold my-2">
+            Trip dates:{" "}
+          </Text>
+          <Text className="text-primary-100">
             {parseDate(travelData.startDate)} - {parseDate(travelData.endDate)}
           </Text>
-          <Text className="text-white">
+          <Text className="text-primary-100">
             ({renderDaysCount(travelData.startDate, travelData.endDate)})
           </Text>
-          <Text className="text-white mt-4">
+          <Text className="text-primary-100 mt-4">
             Starts in {renderDaysUntilStart(travelData.startDate)}
           </Text>
         </View>

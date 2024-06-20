@@ -18,7 +18,7 @@ const EditProfile = () => {
       <SafeAreaView className="bg-primary h-full">
         <ScrollView>
           <View className="pt-20 px-10">
-            <Text className="text-white text-2xl font-psemibold mb-5">
+            <Text className="text-primary-100 text-2xl font-psemibold mb-5">
               Edit your profile:
             </Text>
             <EditProfileForm />
