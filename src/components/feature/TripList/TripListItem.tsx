@@ -21,22 +21,22 @@ const TravelListItem = ({ item }: Props) => {
         <View className="bg-primary-800 rounded-lg flex-row items-center">
           <Image
             source={{ uri: photo }}
-            className="w-[100px] h-[100px] rounded-lg"
+            className="w-[122px] h-[122px] rounded-lg"
             resizeMode="cover"
           />
-          <View className="px-3 gap-1">
-            <Text className="text-primary-100 text-sm font-psemibold">
+          <View className="px-4 gap-1">
+            <Text className="text-primary-100 text-lg font-psemibold">
               {name}
             </Text>
             <View>
-              <Text className="text-primary-100 text-xs">
+              <Text className="text-primary-100 text-sm">
                 {parseDate(startDate)} - {parseDate(endDate)}
               </Text>
-              <Text className="text-primary-100 text-xs">
+              <Text className="text-primary-100 text-sm">
                 {renderDaysCount(startDate, endDate)}
               </Text>
             </View>
-            <Text className="text-primary-100 text-xs">
+            <Text className="text-primary-100 text-sm">
               <Text className="font-psemibold">Starts in </Text>
               {renderDaysUntilStart(startDate)}
             </Text>

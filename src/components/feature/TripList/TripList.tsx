@@ -18,12 +18,12 @@ const TripList = () => {
         ItemSeparatorComponent={() => <View className="h-3" />}
         refreshing={isLoading}
         onRefresh={getTravels}
-        className="mt-5 min-h-[60vh]"
+        className="mt-2 h-[65vh]"
       />
       <CustomButton
         title="Add new trip"
         handlePress={() => router.push("addTrip")}
-        containerStyles="mt-5 bg-secondary"
+        containerStyles="mt-4 bg-secondary"
         textStyles="text-white"
       />
     </View>
