@@ -10,13 +10,14 @@ interface Props {
 }
 
 const TravelListItem = ({ item }: Props) => {
-  const { name, photo, startDate, $id } = item;
-  const { deleteItem, dateRange, daysCount } = useTripDetails(item);
+  const { name, photo, startDate, $id, status } = item;
+  const { deleteItem, dateRange, daysCount, statusColor } =
+    useTripDetails(item);
 
   return (
     <SwipeableItem handleDelete={deleteItem} id={$id}>
       <Pressable onPress={() => router.push(`/details/${$id}`)}>
-        <View className="bg-primary-800 rounded-lg flex-row items-center">
+        <View className={`${statusColor} rounded-lg flex-row items-center`}>
           <Image
             source={{ uri: photo }}
             className="w-[122px] h-[122px] rounded-lg"
@@ -33,7 +34,7 @@ const TravelListItem = ({ item }: Props) => {
               <Text className="text-primary-100 text-sm">{dateRange}</Text>
               <Text className="text-primary-100 text-sm">{daysCount}</Text>
             </View>
-            <TripStart startDate={startDate} />
+            <TripStart startDate={startDate} status={status} />
           </View>
         </View>
       </Pressable>

@@ -1,17 +1,21 @@
+import { TTripStatus } from "@/types/TTripStatus";
 import { getDaysUntilStart } from "@/utils/getDaysUntilStart";
 import React from "react";
 import { Text } from "react-native";
 
 interface Props {
   startDate: string;
+  status: TTripStatus;
 }
 
-const TripStart = ({ startDate }: Props) => {
+const TripStart = ({ startDate, status }: Props) => {
   const days = getDaysUntilStart(startDate);
 
   const renderMessage = () => {
-    if (days === 0) return "Starts today";
-    if (days < 0) return "Trip has already started";
+    if (status === "ongoing") return "Trip is ongoing";
+    if (status === "ended") return "Trip has ended";
+    if (days === 0) return "Trip starts today";
+    if (days < 0) return "Activate trip";
     return (
       <>
         <Text className="font-psemibold">Starts in </Text>
