@@ -22,12 +22,12 @@ const FormField = ({
   return (
     <View className={`${otherStyles}`}>
       <View
-        className={`border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row ${
-          disabled ? "opacity-30" : ""
+        className={`border-none w-full h-12 px-4 bg-white rounded-full items-center flex-row ${
+          disabled ? "opacity-30" : "opacity-80"
         }`}
       >
         <TextInput
-          className="flex-1 text-primary font-pregular text-base"
+          className="flex-1 text-primary font-pregular text-base opacity-50 focus:opacity-100"
           placeholder={placeholder}
           placeholderTextColor="#292929"
           keyboardType={keyboardType}

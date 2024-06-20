@@ -24,30 +24,32 @@ const AuthFormField = ({
   handleChangeText,
   otherStyles,
   keyboardType,
-  ...props
 }: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const isPasswordField = title === "Password";
 
   return (
     <View className={`${otherStyles}`}>
-      <View className="border-none w-full h-12 px-4 bg-white opacity-60 rounded-full focus:opacity-100 items-center flex-row">
+      <View className="border-none w-full h-12 px-4 bg-white opacity-70 rounded-full items-center flex-row">
         <Image
-          source={title === "Password" ? icons.password : icons.profile}
+          source={isPasswordField ? icons.password : icons.profile}
           className="w-4 h-4 mr-3"
           resizeMode="contain"
           testID="password-icon"
         />
         <TextInput
-          className="flex-1 text-black-100 font-pregular text-base"
+          className={`flex-1 text-black-100 font-pregular opacity-50 focus:opacity-100 ${
+            !isPasswordField && "text-base"
+          }`}
           placeholder={placeholder}
           placeholderTextColor="#292929"
           keyboardType={keyboardType}
           value={value}
           onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
+          secureTextEntry={isPasswordField && !showPassword}
           autoCapitalize="none"
         />
-        {title === "Password" && value && (
+        {isPasswordField && value && (
           <TouchableOpacity
             className="py-10"
             onPress={() => setShowPassword(!showPassword)}
