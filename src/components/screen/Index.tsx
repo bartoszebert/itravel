@@ -3,8 +3,7 @@ import { images } from "@/constants";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { LinearGradient } from "expo-linear-gradient";
 import { Redirect, router } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 
 const Index = () => {
   const { isLoading, isLogged } = useGlobalContext();

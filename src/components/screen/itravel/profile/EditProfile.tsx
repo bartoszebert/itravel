@@ -4,11 +4,11 @@ import { router } from "expo-router";
 import {
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   ScrollView,
   Text,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const EditProfile = () => {
   return (

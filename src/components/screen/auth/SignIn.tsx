@@ -1,7 +1,12 @@
 import SignInForm from "@/components/feature/SignInForm";
 import { images } from "@/constants";
-import { Image, ImageBackground, ScrollView, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Image,
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from "react-native";
 
 const SignIn = () => {
   return (

@@ -2,8 +2,7 @@ import signOut from "@/api/auth/signOut";
 import CustomButton from "@/components/ui/CustomButton";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { router } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import UserDetails from "../../../feature/UserDetails";
 
 const Profile = () => {
