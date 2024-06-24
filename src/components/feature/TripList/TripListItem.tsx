@@ -11,7 +11,7 @@ interface Props {
 
 const TravelListItem = ({ item }: Props) => {
   const { name, photo, startDate, $id, status } = item;
-  const { deleteItem, dateRange, daysCount, statusColor } =
+  const { deleteItem, dateRange, daysCount, statusColor, textColor } =
     useTripDetails(item);
 
   return (
@@ -25,16 +25,20 @@ const TravelListItem = ({ item }: Props) => {
           />
           <View className="px-4 gap-1 flex-1">
             <Text
-              className="text-primary-100 text-lg font-psemibold"
+              className={`${textColor} text-lg font-psemibold`}
               numberOfLines={2}
             >
               {name}
             </Text>
             <View>
-              <Text className="text-primary-100 text-sm">{dateRange}</Text>
-              <Text className="text-primary-100 text-sm">{daysCount}</Text>
+              <Text className={`${textColor} text-sm`}>{dateRange}</Text>
+              <Text className={`${textColor} text-sm`}>{daysCount}</Text>
             </View>
-            <TripStart startDate={startDate} status={status} />
+            <TripStart
+              textColor={textColor}
+              startDate={startDate}
+              status={status}
+            />
           </View>
         </View>
       </Pressable>

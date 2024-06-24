@@ -21,6 +21,12 @@ const useTripDetails = (item: ITripItem) => {
     return "bg-primary-800";
   }, [startsToday, status]);
 
+  const textColor = useMemo(() => {
+    if (startsToday && status === "upcoming") return "text-white";
+    if (status === "ongoing") return "text-white";
+    return "text-primary-100";
+  }, [startsToday, status]);
+
   const dateRange =
     startDate === endDate
       ? startDateFormatted
@@ -36,7 +42,14 @@ const useTripDetails = (item: ITripItem) => {
     getTravels();
   };
 
-  return { deleteItem, dateRange, daysCount, startsToday, statusColor };
+  return {
+    deleteItem,
+    dateRange,
+    daysCount,
+    startsToday,
+    statusColor,
+    textColor,
+  };
 };
 
 export default useTripDetails;

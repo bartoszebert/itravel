@@ -6,9 +6,10 @@ import { Text } from "react-native";
 interface Props {
   startDate: string;
   status: TTripStatus;
+  textColor: string;
 }
 
-const TripStart = ({ startDate, status }: Props) => {
+const TripStart = ({ startDate, status, textColor }: Props) => {
   const days = getDaysUntilStart(startDate);
 
   const renderMessage = () => {
@@ -25,7 +26,7 @@ const TripStart = ({ startDate, status }: Props) => {
   };
 
   return (
-    <Text className="text-primary-100 text-sm font-psemibold">
+    <Text className={`${textColor} text-sm font-psemibold`}>
       {renderMessage()}
     </Text>
   );
