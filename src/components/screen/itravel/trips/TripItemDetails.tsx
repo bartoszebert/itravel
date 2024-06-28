@@ -1,4 +1,3 @@
-import TripStart from "@/components/ui/TripStart";
 import { useTripContext } from "@/context/TripProvider";
 import { ITripItem } from "@/interfaces/ITripItem";
 import { parseDate } from "@/utils/parseDate";
@@ -46,7 +45,6 @@ const TripItemDetails = () => {
           <Text className="text-primary-100">
             ({renderDaysCount(travelData.startDate, travelData.endDate)})
           </Text>
-          <TripStart startDate={travelData.startDate} />
         </View>
       </View>
     </ScrollView>
